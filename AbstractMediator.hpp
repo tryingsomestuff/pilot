@@ -2,7 +2,7 @@
 #define ABSTRACT__MEDIATOR__H
 
 #include <iostream>
-#include "TraitMediator.hpp"
+#include "Trait.hpp"
 
 /**
  *  Abstract mediator container. Encapsulate any type of data.
@@ -19,13 +19,13 @@ class AbstractMediator{
 			M_BAD       = 1,
 			M_NOT_READY = 2
 		};
-		AbstractMediator();
+        AbstractMediator();
 		virtual ~AbstractMediator();
 		// is the mediator data ready to be used ?
 		virtual M_Status Status() = 0;
 		// Init will be called just after the mediator is registered
 		virtual bool Init() = 0;
-		virtual std::string Name();
+        virtual std::string Name();
    protected:
         std::string _name;
 };

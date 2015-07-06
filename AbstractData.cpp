@@ -1,4 +1,4 @@
-#include "AbstractData.h"
+#include "AbstractData.hpp"
 
 /**
  *  Abstract facade to DataPool singleton container
@@ -11,3 +11,8 @@ AbstractData::AbstractData(){
 AbstractData::~AbstractData(){
 
 }
+
+std::string AbstractData::Name(){
+  return _name;
+}
+

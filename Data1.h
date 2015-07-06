@@ -3,16 +3,15 @@
 
 #include <iostream>
 
-#include "AbstractData.h"
+#include "AbstractData.hpp"
 
 /**
  *  A concrete facade to DataPool singleton container
  **/
-class Data1 : public AbstractData{
+class Data1 : public AbstractDataBase<Data1>{
 	public:
 		Data1();
-		virtual ~Data1();
-		virtual std::string Name();
+        virtual ~Data1();
 
 		double Toto();
 		std::string Bla();

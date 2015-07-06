@@ -1,5 +1,5 @@
-#ifndef TRAIT__MEDIATOR__H
-#define TRAIT__MEDIATOR__H
+#ifndef TRAIT____H
+#define TRAIT____H
 
 #include <iostream>
 
@@ -16,19 +16,38 @@
  **/
 template<class T>
 struct TraitMediatorName{
-	static std::string Name(){return "";}; // nothing means bad ...
+    static std::string Name(){return "";} // nothing means bad ...
 };
 
 class Mediator1; // forward decl
 template<>
 struct TraitMediatorName<Mediator1>{
-	static std::string Name(){return "med1";};
+    static std::string Name(){return "med1";}
 };
 
 class Mediator2; // forward decl
 template<>
 struct TraitMediatorName<Mediator2>{
-	static std::string Name(){return "med2";};
+    static std::string Name(){return "med2";}
 };
 
-#endif // TRAIT__MEDIATOR__H
+
+template<class T>
+struct TraitDataName{
+    static std::string Name(){return "";} // nothing means bad ...
+};
+
+class Data1; // forward decl
+template<>
+struct TraitDataName<Data1>{
+    static std::string Name(){return "data1";}
+};
+
+class Data2; // forward decl
+template<>
+struct TraitDataName<Data2>{
+    static std::string Name(){return "data2";}
+};
+
+
+#endif // TRAIT____H

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "AbstractCommand.h" // NOT a foward decl because this is main entry point header ...
+#include "AbstractCommand.h" // NOT a forward decl because this is the main entry point header ...
 #include "DataFactory.h"
 #include "CommandFactory.h"
 

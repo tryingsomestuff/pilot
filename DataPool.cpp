@@ -1,5 +1,5 @@
 #include "DataPool.h"
-#include "TraitMediator.hpp"
+#include "Trait.hpp"
 #include "AbstractMediator.hpp"
 
 #include <stdlib.h>

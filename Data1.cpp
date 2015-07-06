@@ -1,8 +1,8 @@
 #include "Data1.h"
 
-#include "TraitMediator.hpp"
+#include "Trait.hpp"
 #include "DataPool.h"
-#include "AbstractData.h"
+#include "AbstractData.hpp"
 
 #include "Mediator1.h"
 #include "Mediator2.h"
@@ -12,16 +12,12 @@
 /**
  *  A concrete facade to DataPool singleton container
  **/
-Data1::Data1():AbstractData(){
+Data1::Data1():AbstractDataBase(){
 
 }
 
 Data1::~Data1(){
 
-}
-
-std::string Data1::Name(){
-  return "Data1";
 }
 
 double Data1::Toto(){

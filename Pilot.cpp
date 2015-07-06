@@ -5,7 +5,7 @@
 #include <string>
 #include <assert.h>
 
-#include "pilot.h"
+#include "Pilot.h"
 #include "MediatorFactory.h"
 #include "AbstractMediator.hpp"
 

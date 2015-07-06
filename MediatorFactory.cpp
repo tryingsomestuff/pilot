@@ -1,5 +1,5 @@
 #include "MediatorFactory.h"
-#include "TraitMediator.hpp"
+#include "Trait.hpp"
 #include "DataPool.h"
 
 #include "Mediator1.h"

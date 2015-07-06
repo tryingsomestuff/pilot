@@ -1,4 +1,4 @@
-#include "pilot.h"
+#include "Pilot.h"
 
 int main(int argc,char ** argv){
 	std::vector<DataFactory::DataType> datas;
