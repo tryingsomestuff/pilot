@@ -8,7 +8,7 @@
 /**
  *  A concrete facade to DataPool singleton container
  **/
-class Data2 : public AbstractDataBase<Data1>{
+class Data2 : public AbstractDataBase<Data2>{
 	public:
 		Data2();
         virtual ~Data2();

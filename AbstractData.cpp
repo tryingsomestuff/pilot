@@ -12,7 +12,4 @@ AbstractData::~AbstractData(){
 
 }
 
-std::string AbstractData::Name(){
-  return _name;
-}
 

@@ -4,9 +4,17 @@
 class AbstractCommand;
 class AbstractData;
 
+#include "AbstractFactory.hpp"
+
 /**
  * Factory of command
  **/
+template <class DerivedType>
+class CommandCreator : public Creator<DerivedType, AbstractCommand> {};
+
+typedef AbstractFactory<AbstractCommand,std::string> CommandFactory;
+
+/*
 class CommandFactory{
 	public:
 		enum CommandType{
@@ -17,5 +25,6 @@ class CommandFactory{
 		};
 		static AbstractCommand * Create(AbstractData * d, CommandType type);
 };
+*/
 
 #endif // COMMAND_FACTORY__H

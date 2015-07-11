@@ -3,6 +3,13 @@
 
 #include <iostream>
 
+class Named{
+public:
+	inline std::string Name(){return _name;};
+protected:
+	std::string _name;
+};
+
 /**
  *  Trait for mediator Name.
  *  MUST be defined for each mediator type.
@@ -23,6 +30,13 @@ struct TraitMediatorName{
 
 template<class T>
 struct TraitDataName{
+    static std::string Name(){return "";} // nothing means bad ...
+};
+
+// DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
+
+template<class T>
+struct TraitCommandName{
     static std::string Name(){return "";} // nothing means bad ...
 };
 

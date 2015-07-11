@@ -13,7 +13,6 @@
  *  A concrete facade to DataPool singleton container
  **/
 Data1::Data1():AbstractDataBase(){
-
 }
 
 Data1::~Data1(){

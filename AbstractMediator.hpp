@@ -11,7 +11,7 @@
  *  some functional stuff also, and AbstractCommand::_Execute
  *  will eventually use those ...
  **/
-class AbstractMediator{
+class AbstractMediator: public Named{
 	public:
 		// is the mediator data ready to be used ?
 		enum M_Status{
@@ -25,9 +25,6 @@ class AbstractMediator{
 		virtual M_Status Status() = 0;
 		// Init will be called just after the mediator is registered
 		virtual bool Init() = 0;
-        virtual std::string Name();
-   protected:
-        std::string _name;
 };
 
 /**

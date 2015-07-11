@@ -2,19 +2,18 @@
 #define ABSTRACT__DATA__H
 
 #include <iostream>
+#include <set>
+
 #include "Trait.hpp"
 
 /**
  *  Abstract facade to DataPool singleton container
  *  Note that this facade shall also be a proxy (think late-init, buffered, access to distant data, ...)
  **/
-class AbstractData{
+class AbstractData: public Named{
     public:
         AbstractData();
         virtual ~AbstractData();
-        std::string Name();
-protected:
-        std::string _name;
 };
 
 /**

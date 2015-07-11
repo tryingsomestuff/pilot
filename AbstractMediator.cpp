@@ -14,7 +14,3 @@ AbstractMediator::AbstractMediator(){
 AbstractMediator::~AbstractMediator(){
 
 }
-
-std::string AbstractMediator::Name(){
-  return _name;
-}

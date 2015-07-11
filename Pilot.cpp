@@ -16,7 +16,7 @@ namespace Pilot{
 	/**
 	 * Abstract Pilot builder ...
 	 **/
-	std::vector<AbstractCommand*> Build(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::CommandType> commands){
+	std::vector<AbstractCommand*> Build(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands){
 		assert(datas.size() == commands.size());
 		std::vector<AbstractCommand*> ret;
 		for(uint k = 0 ; k < datas.size() ; ++k){
@@ -25,7 +25,8 @@ namespace Pilot{
 				std::cout << "Error data not built" << std::endl;
 				return std::vector<AbstractCommand*>();
 			}
-			AbstractCommand * c = CommandFactory::Create(d,commands[k]);
+			AbstractCommand * c = CommandFactory::Create(commands[k]);
+			c->SetData(d);
 			if ( !c ){
 				std::cout << "Error command not built" << std::endl;
 				return std::vector<AbstractCommand*>();

@@ -10,7 +10,7 @@
  * A concrete Command using Data1 facade (mix of Mediator1 and Mediator2)
  **/
 
-Command1::Command1(Data1 * d):AbstractCommand(d){
+Command1::Command1():AbstractCommandBase(){
 
 }
 
