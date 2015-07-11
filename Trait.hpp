@@ -19,35 +19,13 @@ struct TraitMediatorName{
     static std::string Name(){return "";} // nothing means bad ...
 };
 
-class Mediator1; // forward decl
-template<>
-struct TraitMediatorName<Mediator1>{
-    static std::string Name(){return "med1";}
-};
-
-class Mediator2; // forward decl
-template<>
-struct TraitMediatorName<Mediator2>{
-    static std::string Name(){return "med2";}
-};
-
+// DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTMEDIATOR
 
 template<class T>
 struct TraitDataName{
     static std::string Name(){return "";} // nothing means bad ...
 };
 
-class Data1; // forward decl
-template<>
-struct TraitDataName<Data1>{
-    static std::string Name(){return "data1";}
-};
-
-class Data2; // forward decl
-template<>
-struct TraitDataName<Data2>{
-    static std::string Name(){return "data2";}
-};
-
+// DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
 
 #endif // TRAIT____H

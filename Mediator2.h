@@ -22,4 +22,9 @@ class Mediator2 : public AbstractMediatorBase<Mediator2>{
 		bool b;
 };
 
+template<>
+struct TraitMediatorName<Mediator2>{
+    static std::string Name(){return "med2";}
+};
+
 #endif // MEDIATOR__2___H

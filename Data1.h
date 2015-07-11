@@ -17,4 +17,9 @@ class Data1 : public AbstractDataBase<Data1>{
 		std::string Bla();
 };
 
+template<>
+struct TraitDataName<Data1>{
+    static std::string Name(){return "data1";}
+};
+
 #endif // DATA__1__H

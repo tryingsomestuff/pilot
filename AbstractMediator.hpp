@@ -31,12 +31,12 @@ class AbstractMediator{
 };
 
 /**
- *  Elegant use of CRTP to automatically define Name from Trait
+ *  Automatically define Name from Trait
  *  This allows Trait specialization to be done anywhere as soon
  *  as the header is accessible here ...
  **/
 template< class T >
-class AbstractMediatorBase : public AbstractMediator{ // CRTP
+class AbstractMediatorBase : public AbstractMediator{
    public:
        AbstractMediatorBase():AbstractMediator(){
           _name = TraitMediatorName<T>::Name();

@@ -18,12 +18,12 @@ protected:
 };
 
 /**
- *  Elegant use of CRTP to automatically define Name from Trait
+ *  Automatically define Name from Trait
  *  This allows Trait specialization to be done anywhere as soon
  *  as the header is accessible here ...
  **/
 template< class T >
-class AbstractDataBase : public AbstractData{ // CRTP
+class AbstractDataBase : public AbstractData{
    public:
        AbstractDataBase():AbstractData(){
           _name = TraitDataName<T>::Name();
