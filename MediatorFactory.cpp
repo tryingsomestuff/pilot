@@ -10,6 +10,9 @@
 
 #include <string>
 
+///@TODO SHALL KNOW NOTHING ABOUT DATA1 !!!!!!
+// so STATIC data1 shall already know the list of mediator needed !
+
 std::vector<AbstractMediator *> MediatorFactory::Create(DataFactory::DataType type){
 
 	if ( type == TraitDataName<Data1>::Name() ){

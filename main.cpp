@@ -10,10 +10,10 @@
 int main(int argc,char ** argv){
 
 	//Register all Data ...
-	DataFactory::Instance()->Register(TraitDataName<Data1>::Name(),new DataCreator<Data1>);
-	DataFactory::Instance()->Register(TraitDataName<Data2>::Name(),new DataCreator<Data2>);
+	DataFactory::Register(TraitDataName<Data1>::Name(),new DataCreator<Data1>);
+	DataFactory::Register(TraitDataName<Data2>::Name(),new DataCreator<Data2>);
 
-	CommandFactory::Instance()->Register(TraitCommandName<Command1>::Name(),new CommandCreator<Command1>);
+	CommandFactory::Register(TraitCommandName<Command1>::Name(),new CommandCreator<Command1>);
 
 	std::vector<DataFactory::DataType> datas;
 	std::vector<CommandFactory::DataType> commands;

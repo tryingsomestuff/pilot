@@ -51,14 +51,16 @@ public:
             ++i;
         }
     }
+	/*
 	static AbstractFactory<T, KeyT> * Instance(){
 		if ( ! _instance )
 			_instance = new AbstractFactory<T,KeyT>();
 		return _instance;
 	}
+	*/
 private:
 	AbstractFactory(){};
-	static AbstractFactory<T, KeyT> * _instance;
+	//static AbstractFactory<T, KeyT> * _instance;
     static std::map<KeyT, CreatorBase<T>*> _map;
 };
 
