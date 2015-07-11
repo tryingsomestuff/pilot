@@ -13,10 +13,11 @@ class AbstractCommand:public Named{
 	public:
 		explicit AbstractCommand();
 		virtual ~AbstractCommand();
-		inline void SetData(AbstractData * d){_d=d;}
-		bool Execute();
-		inline AbstractData * GetData(){return _d;}
-		inline const AbstractData * GetData()const{return _d;}
+
+		bool                  Execute(                );
+		void                  SetData(AbstractData * d);
+		AbstractData *        GetData(                );
+		const AbstractData *  GetData(                )const;
 	protected:
 		virtual bool _Execute() = 0;
 		AbstractData * _d;
@@ -25,7 +26,7 @@ class AbstractCommand:public Named{
 /**
  *  Automatically define Name from Trait
  *  This allows Trait specialization to be done anywhere as soon
- *  as the header is accessible here ...
+ *  as the header is accessible there ...
  **/
 template< class T >
 class AbstractCommandBase : public AbstractCommand{

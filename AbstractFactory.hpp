@@ -2,10 +2,11 @@
 #define __ABSTRACT_FACTORY__H
 
 #include <map>
+#include <assert.h>
 
 /**
 * An abstract base creator class
-* Create() must be implemented for each Derived type
+* Create() is implemented for each Derived type in template Creator
 **/
 template <class T>
 class CreatorBase{
@@ -16,7 +17,7 @@ public:
 
 /**
 * Templated Creator
-* Must specify both base type and derived type ...
+* Must specify both base type and derived type
 **/
 template <class DerivedType, class BaseType>
 class Creator : public CreatorBase<BaseType>{
@@ -27,23 +28,41 @@ public:
 };
 
 /**
-* An abstract factory singleton
+* An abstract factory
 * Used to register new KeyT/Creator pair
 * Contains a map of corresponding creators
+* The main constrain is that Create() function do not take any argument
 **/
 template <class T, class KeyT>
 class AbstractFactory{
 public:
 	typedef KeyT DataType;
 
-    static void Register(KeyT Id, CreatorBase<T>* Fn){
-		///@todo checks
-        _map[Id] = Fn;
+	static bool Contains(KeyT id){
+		if ( _map.find(id) != _map.end() ){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	/// add creator to registered type
+    static void Register(KeyT id, CreatorBase<T>* Fn){
+		if( Contains(id) ){
+			std::cout << "A creator with the same name is already registered " << id << std::endl;
+		}
+		else{
+           _map[id] = Fn;
+		}
     }
-	static T* Create(KeyT Id){
-		///@todo chacks
-        return _map[Id]->Create();
+
+	/// create an object with the corresponding creator
+	static T* Create(KeyT id){
+		assert(Contains(id));
+        return _map[id]->Create();
     }
+
     ~AbstractFactory(){
         std::map<KeyT, CreatorBase<T>*>::iterator i = _map.begin();
         while (i != _map.end()){
@@ -51,6 +70,7 @@ public:
             ++i;
         }
     }
+	
 	/*
 	static AbstractFactory<T, KeyT> * Instance(){
 		if ( ! _instance )
@@ -59,7 +79,7 @@ public:
 	}
 	*/
 private:
-	AbstractFactory(){};
+	//AbstractFactory(){};
 	//static AbstractFactory<T, KeyT> * _instance;
     static std::map<KeyT, CreatorBase<T>*> _map;
 };

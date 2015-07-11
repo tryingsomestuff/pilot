@@ -7,6 +7,8 @@
 #include <iostream>
 #include <assert.h>
 
+typedef std::map<std::string,AbstractMediator *>::iterator _m_it;
+
 DataPool::~DataPool(){
 	_m_it it = _mediators.begin();
 	for ( ; it != _mediators.end(); ++it){
@@ -29,6 +31,7 @@ void DataPool::Register(AbstractMediator * mediator){
 		std::cout << "Mediator already present in DataPool" << std::endl;
 		// HORRIBLE !!!
 		// just pay the cost of instanciation and delete it right now !!!
+		// Shall never append anyway...
 		delete mediator;
 		return;
 	}

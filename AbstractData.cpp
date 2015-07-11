@@ -1,9 +1,5 @@
 #include "AbstractData.hpp"
 
-/**
- *  Abstract facade to DataPool singleton container
- *  Note that this facade shall also be a proxy (think late-init, buffered, access to distant data, ...)
- **/
 AbstractData::AbstractData(){
 
 }
@@ -12,4 +8,10 @@ AbstractData::~AbstractData(){
 
 }
 
+void AbstractData::AddDepend(std::string m){
+	_mediatorTypes.insert(m);
+}
 
+const std::set<std::string> AbstractData::GetMediatorTypes()const{
+	return _mediatorTypes;
+}

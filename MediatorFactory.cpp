@@ -9,9 +9,6 @@
 #include <string>
 #include <set>
 
-/**
- * Factory of command
- **/
 // Must defined corresponding static members ...
 
 /*
@@ -23,13 +20,9 @@ std::map<std::string,CreatorBase<AbstractMediator>*>
 AbstractFactory<AbstractMediator,std::string>::_map = std::map<std::string,CreatorBase<AbstractMediator>*>();
 
 
-///@TODO SHALL KNOW NOTHING ABOUT DATA1 !!!!!!
-// so STATIC data1 shall already know the list of mediator needed !
 
 std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command){
-
 	std::vector<AbstractMediator *> ret;
-
 	const std::set<std::string> mediatorTypes = command->GetData()->GetMediatorTypes();
 	std::set<std::string>::const_iterator it = mediatorTypes.cbegin();
 	std::cout << "Creating mediators for data " << command->GetData()->Name() << std::endl;
@@ -40,6 +33,5 @@ std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * 
 			ret.push_back(DataPool::Instance()->GetMediator(*it));
 		}
 	}
-
 	return ret;
 }

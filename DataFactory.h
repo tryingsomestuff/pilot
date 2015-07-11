@@ -6,11 +6,14 @@
 class AbstractData;
 
 /**
- *  Factory of facade
+ *  Creator of data facade
  **/
 template <class DerivedType>
 class DataCreator : public Creator<DerivedType, AbstractData> {};
 
+/**
+ *  Factory of data facade
+ **/
 typedef AbstractFactory<AbstractData,std::string> DataFactory;
 
 #endif // DATA__FACTORY__H

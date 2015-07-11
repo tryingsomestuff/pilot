@@ -13,11 +13,9 @@ namespace Pilot{
 
 	typedef unsigned int uint;
 
-	/**
-	 * Abstract Pilot builder ...
-	 **/
 	std::vector<AbstractCommand*> Build(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands){
 		assert(datas.size() == commands.size());
+
 		std::vector<AbstractCommand*> ret;
 		for(uint k = 0 ; k < datas.size() ; ++k){
 			AbstractData *    d = DataFactory::Create(datas[k]);
@@ -36,9 +34,6 @@ namespace Pilot{
 		return ret;
 	}
 
-	/**
-	 * Register all needed mediators for a given DataType
-	 **/
 	void RegisterMediators(std::vector<AbstractCommand *> commands){
 		for(uint k = 0 ; k < commands.size() ; ++k){
 			std::vector<AbstractMediator*> mediators = MediatorBuilder::Create(commands[k]);

@@ -8,14 +8,19 @@
 class AbstractCommand;
 
 /**
- *  Factory of mediator
+ *  Creator of Mediator
  **/
 template <class DerivedType>
 class MediatorCreator : public Creator<DerivedType, AbstractMediator> {};
 
+/**
+ *  Factory of mediator
+ **/
 typedef AbstractFactory<AbstractMediator,std::string> MediatorFactory;
 
-
+/**
+ *  Allows to build necessary mediators for a spcecific Command
+ **/
 class MediatorBuilder{
 	public:
 		static std::vector<AbstractMediator *> Create(const AbstractCommand * command);

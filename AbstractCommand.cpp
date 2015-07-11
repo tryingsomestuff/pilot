@@ -3,10 +3,6 @@
 
 #include "assert.h"
 
-/**
- *  Abstract command, use an AbstractData (facade) to access specified data from DataPool
- *  _Execute must be defined in sub class to implement real stuff ...
- **/
 AbstractCommand::AbstractCommand():_d(0){
 
 }
@@ -16,6 +12,19 @@ AbstractCommand::~AbstractCommand(){
 }
 
 bool AbstractCommand::Execute(){
+	// data is required for _Execute to work !
 	assert(_d!=0);
 	return _Execute();
+}
+
+void AbstractCommand::SetData(AbstractData * d){
+	_d=d;
+}
+
+AbstractData * AbstractCommand::GetData(){
+	return _d;
+}
+
+const AbstractData * AbstractCommand::GetData()const{
+	return _d;
 }

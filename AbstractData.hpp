@@ -16,17 +16,17 @@ class AbstractData: public Named{
     public:
         AbstractData();
         virtual ~AbstractData();
-		inline void AddDepend(std::string m){_mediatorTypes.insert(m);}
-		inline const std::set<std::string> GetMediatorTypes()const{return _mediatorTypes;}
+
+		void                        AddDepend       (std::string m );
+		const std::set<std::string> GetMediatorTypes(              )const;
     private:
 		std::set<std::string> _mediatorTypes;
-
 };
 
 /**
  *  Automatically define Name from Trait
  *  This allows Trait specialization to be done anywhere as soon
- *  as the header is accessible here ...
+ *  as the header is accessible there ...
  **/
 template< class T >
 class AbstractDataBase : public AbstractData{

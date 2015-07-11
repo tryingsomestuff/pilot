@@ -12,28 +12,24 @@
 
 int main(int argc,char ** argv){
 
-	std::cout << "Registering Datas" << std::endl;
-
 	// Register all Data ...
+	std::cout << "Registering Datas" << std::endl;
 	DataFactory::Register(TraitDataName<Data1>::Name(),new DataCreator<Data1>);
-	DataFactory::Register(TraitDataName<Data2>::Name(),new DataCreator<Data2>);
-
-	std::cout << "Registering Commands" << std::endl;
+	DataFactory::Register(TraitDataName<Data2>::Name(),new DataCreator<Data2>); // won't be used...
 
 	// Register all Command
+	std::cout << "Registering Commands" << std::endl;
 	CommandFactory::Register(TraitCommandName<Command1>::Name(),new CommandCreator<Command1>);
 
-	std::cout << "Registering Mediators" << std::endl;
-
 	// Register mediator
+	std::cout << "Registering Mediators" << std::endl;
 	MediatorFactory::Register(TraitMediatorName<Mediator1>::Name(), new MediatorCreator<Mediator1>);
 	MediatorFactory::Register(TraitMediatorName<Mediator2>::Name(), new MediatorCreator<Mediator2>);
 
 	///@todo from here a Pilot is needed
 
-	std::cout << "Instanciating data and commands" << std::endl;
-
 	// Indeed create those Datas and Commands
+	std::cout << "Instanciating data and commands" << std::endl;
 	std::vector<DataFactory::DataType> datas;
 	std::vector<CommandFactory::DataType> commands;
 	datas.push_back(TraitDataName<Data1>::Name());
@@ -48,7 +44,7 @@ int main(int argc,char ** argv){
 	
 	std::cout << "Executing pilot" << std::endl;
 
-	// Execute pilot   Pilot.Execute();
+	// Execute pilot :: Pilot.Execute();
 	for(unsigned int k = 0 ; k < tasks.size(); ++k){
 		tasks[k]->Execute();
 	}

@@ -1,12 +1,7 @@
 #include "DataFactory.h"
-#include "AbstractData.hpp"
 
-#include <iostream>
-#include <string>
+class AbstractData;
 
-/**
- *  Factory of facade
- **/
 // Must defined corresponding static members ...
 /*
 AbstractFactory<AbstractData,std::string> *

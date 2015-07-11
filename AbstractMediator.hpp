@@ -21,16 +21,16 @@ class AbstractMediator: public Named{
 		};
         AbstractMediator();
 		virtual ~AbstractMediator();
-		// is the mediator data ready to be used ?
+		/// Is the mediator data ready to be used ?
 		virtual M_Status Status() = 0;
-		// Init will be called just after the mediator is registered
-		virtual bool Init() = 0;
+		/// Init() will be called just after the mediator is registered
+		virtual bool     Init()   = 0;
 };
 
 /**
  *  Automatically define Name from Trait
  *  This allows Trait specialization to be done anywhere as soon
- *  as the header is accessible here ...
+ *  as the header is accessible there ...
  **/
 template< class T >
 class AbstractMediatorBase : public AbstractMediator{

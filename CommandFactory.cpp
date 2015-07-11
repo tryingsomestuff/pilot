@@ -1,11 +1,5 @@
 #include "CommandFactory.h"
 
-#include "Data1.h"
-#include "Command1.h"
-
-/**
- * Factory of command
- **/
 // Must defined corresponding static members ...
 
 /*

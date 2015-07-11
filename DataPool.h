@@ -8,22 +8,21 @@ class AbstractMediator;
 
 /**
  *  The DataPool singleton.
- *  Register every Mediator in the DataPool.
- *  Use facade to mix Mediator together and filter them !
+ *  You must register every Mediator in the DataPool.
+ *  Use facade to mix up Mediator together and/or filter them !
  **/
 class DataPool{ // singleton
 	public:
 		~DataPool();
-		static DataPool * Instance();
+		static DataPool *  Instance();
 		// Delegate mediator to DataPool
-		void Register(AbstractMediator * mediator);
+		void               Register   (AbstractMediator * mediator);
 		AbstractMediator * GetMediator(std::string name);
-		bool Contains(std::string name);
+		bool               Contains   (std::string name);
 	private:
 		explicit DataPool(){};
 		static DataPool * _pool;
 		std::map<std::string,AbstractMediator * > _mediators;
-        typedef std::map<std::string,AbstractMediator *>::iterator _m_it;
 };
 
 #endif // DATA__POOOL__H
