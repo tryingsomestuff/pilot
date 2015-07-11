@@ -9,7 +9,7 @@
  *  All data container must inherit from this one.
  *  Note that in some case mediators will probably contains
  *  some functional stuff also, and AbstractCommand::_Execute
- *  will eventually use those ...
+ *  will eventually use those throught data facades...
  **/
 class AbstractMediator: public Named{
 	public:

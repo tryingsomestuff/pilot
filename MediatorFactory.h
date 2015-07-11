@@ -3,16 +3,22 @@
 
 #include <vector>
 
-#include "DataFactory.h"
-
-class AbstractMediator;
+#include "AbstractFactory.hpp"
+#include "AbstractMediator.hpp"
+class AbstractCommand;
 
 /**
  *  Factory of mediator
  **/
-class MediatorFactory{
+template <class DerivedType>
+class MediatorCreator : public Creator<DerivedType, AbstractMediator> {};
+
+typedef AbstractFactory<AbstractMediator,std::string> MediatorFactory;
+
+
+class MediatorBuilder{
 	public:
-		static std::vector<AbstractMediator *> Create(DataFactory::DataType type);
+		static std::vector<AbstractMediator *> Create(const AbstractCommand * command);
 };
 
 #endif // MEDIATOR__FACTORY__H

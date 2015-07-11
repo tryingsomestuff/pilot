@@ -19,7 +19,7 @@ namespace Pilot{
 	 * Register all needed mediators for a given DataType
 	 **/
 	void
-	RegisterMediators(std::vector<DataFactory::DataType> datas);
+	RegisterMediators(std::vector<AbstractCommand *> datas);
 } // Pilot
 
 

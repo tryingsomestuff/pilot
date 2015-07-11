@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include <set>
+#include <string>
 
 #include "Trait.hpp"
+#include "MediatorFactory.h"
 
 /**
  *  Abstract facade to DataPool singleton container
@@ -14,6 +16,11 @@ class AbstractData: public Named{
     public:
         AbstractData();
         virtual ~AbstractData();
+		inline void AddDepend(std::string m){_mediatorTypes.insert(m);}
+		inline const std::set<std::string> GetMediatorTypes()const{return _mediatorTypes;}
+    private:
+		std::set<std::string> _mediatorTypes;
+
 };
 
 /**

@@ -13,8 +13,10 @@ class AbstractCommand:public Named{
 	public:
 		explicit AbstractCommand();
 		virtual ~AbstractCommand();
-		void SetData(AbstractData * d){_d=d;}
+		inline void SetData(AbstractData * d){_d=d;}
 		bool Execute();
+		inline AbstractData * GetData(){return _d;}
+		inline const AbstractData * GetData()const{return _d;}
 	protected:
 		virtual bool _Execute() = 0;
 		AbstractData * _d;

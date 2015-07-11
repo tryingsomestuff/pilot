@@ -39,9 +39,9 @@ namespace Pilot{
 	/**
 	 * Register all needed mediators for a given DataType
 	 **/
-	void RegisterMediators(std::vector<DataFactory::DataType> datas){
-		for(uint k = 0 ; k < datas.size() ; ++k){
-			std::vector<AbstractMediator*> mediators = MediatorFactory::Create(datas[k]);
+	void RegisterMediators(std::vector<AbstractCommand *> commands){
+		for(uint k = 0 ; k < commands.size() ; ++k){
+			std::vector<AbstractMediator*> mediators = MediatorBuilder::Create(commands[k]);
 			for (uint m = 0 ; m < mediators.size(); ++m){
 				std::cout << std::string("Init mediator ") + mediators[m]->Name() << std::endl;
 				if ( ! mediators[m]->Init() ){

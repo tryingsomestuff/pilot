@@ -5,7 +5,7 @@
 
 class Named{
 public:
-	inline std::string Name(){return _name;};
+	inline std::string Name()const {return _name;};
 protected:
 	std::string _name;
 };
