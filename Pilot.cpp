@@ -2,6 +2,7 @@
 #include <map>
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <assert.h>
 
@@ -20,10 +21,10 @@ Pilot::~Pilot(){
 }
 
 
-void Pilot::AddTasks(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands){
-	std::cout << "Instanciating data and commands" << std::endl;
-	_datasType    = datas;
-	_commandsType = commands;
+void Pilot::AddTask(DataFactory::DataType data, CommandFactory::DataType command){
+	std::cout << "Adding task " << data << " : " << command << std::endl;
+	_datasType.push_back(data);
+	_commandsType.push_back(command);
 }
 
 
@@ -71,4 +72,12 @@ void Pilot::Execute(){
 	for(unsigned int k = 0 ; k < _commands.size(); ++k){
 		_commands[k]->Execute();
 	}
+}
+
+void Pilot::Read(std::string fileName){
+	std::ifstream file(fileName);
+    std::string dataType,commandType;
+	while (file >> dataType >> commandType){
+        AddTask(dataType,commandType);       
+    }
 }

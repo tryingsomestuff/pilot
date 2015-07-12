@@ -32,6 +32,8 @@ public:
 * Used to register new KeyT/Creator pair
 * Contains a map of corresponding creators
 * The main constrain is that Create() function do not take any argument
+* Please note that KeyT MUST be serializable (operator<<) 
+* May be converted to singleton to avoid memory leak
 **/
 template <class T, class KeyT>
 class AbstractFactory{
@@ -51,7 +53,8 @@ public:
 	/// add creator to registered type
     static void Register(KeyT id, CreatorBase<T>* Fn){
 		if( Contains(id) ){
-			std::cout << "A creator with the same name is already registered " << id << std::endl;
+			std::cout << "WARNING :: A creator with the same name is already registered " << id << std::endl;
+			std::cout << "This is either a double registration or a name collision. " << std::endl;
 		}
 		else{
            _map[id] = Fn;
@@ -60,8 +63,13 @@ public:
 
 	/// create an object with the corresponding creator
 	static T* Create(KeyT id){
-		assert(Contains(id));
-        return _map[id]->Create();
+		if( Contains(id) ){
+           return _map[id]->Create();
+		}
+		else{
+		   std::cout << "WARNING :: trying to use a Creator that is not registered : " << id << std::endl;
+		   return NULL;
+		}
     }
 
     ~AbstractFactory(){

@@ -13,7 +13,10 @@ public:
 	Pilot();
 	~Pilot();
 
-	void AddTasks(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands);
+	/**
+	 * Tell the pilot the sequence of datas/commands that will be run
+	 **/
+	void AddTask(DataFactory::DataType datas, CommandFactory::DataType commands);
 
 	/**
 	 * Abstract Pilot builder ...
@@ -34,6 +37,11 @@ public:
 	 * well ... FIFO ...
 	 **/
 	void Execute();
+
+	/**
+	 * Read a pilot command file
+	 **/
+	void Read(std::string fileName);
 
 private:
 

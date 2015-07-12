@@ -16,7 +16,7 @@ class AbstractCommand:public Named{
 
 		bool                  Execute(                );
 		void                  SetData(AbstractData * d);   // take ownership !!!
-		AbstractData *        GetData(                );
+		AbstractData *        GetData(                );   // shall will really give this one ???
 		const AbstractData *  GetData(                )const;
 	protected:
 		virtual bool _Execute() = 0;

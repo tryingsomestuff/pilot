@@ -22,7 +22,7 @@ class AbstractMediator: public Named{
         AbstractMediator();
 		virtual ~AbstractMediator();
 		/// Is the mediator data ready to be used ?
-		virtual M_Status Status() = 0;
+		virtual M_Status Status()const = 0;
 		/// Init() will be called just after the mediator is registered
 		virtual bool     Init()   = 0;
 };

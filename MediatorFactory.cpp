@@ -19,8 +19,6 @@ AbstractFactory<AbstractMediator,std::string>::_instance = NULL;
 std::map<std::string,CreatorBase<AbstractMediator>*> 
 AbstractFactory<AbstractMediator,std::string>::_map = std::map<std::string,CreatorBase<AbstractMediator>*>();
 
-
-
 std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command){
 	std::vector<AbstractMediator *> ret;
 	const std::set<std::string> mediatorTypes = command->GetData()->GetMediatorTypes();

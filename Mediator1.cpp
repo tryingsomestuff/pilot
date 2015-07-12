@@ -14,7 +14,7 @@ Mediator1::~Mediator1(){
 
 }
 
-AbstractMediator::M_Status Mediator1::Status(){
+AbstractMediator::M_Status Mediator1::Status()const{
   return M_READY;
 }
 
