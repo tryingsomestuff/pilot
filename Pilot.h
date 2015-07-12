@@ -43,6 +43,14 @@ public:
 	 **/
 	void Read(std::string fileName);
 
+	/**
+	 * ALL IN ONE 
+	 * Execute all commands in there registering order
+	 * well ... FIFO ...
+	 **/
+	void Execute(std::string filename);
+
+
 private:
 
     std::vector<DataFactory::DataType>    _datasType;

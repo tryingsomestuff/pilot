@@ -81,3 +81,10 @@ void Pilot::Read(std::string fileName){
         AddTask(dataType,commandType);       
     }
 }
+
+void Pilot::Execute(std::string filename){
+	Read(filename);
+	Build();
+	RegisterMediators();
+	Execute();
+}

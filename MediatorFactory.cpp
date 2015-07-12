@@ -32,6 +32,9 @@ std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * 
 			DataPool::Instance()->Register(MediatorFactory::Create(*it));
 			ret.push_back(DataPool::Instance()->GetMediator(*it));
 		}
+		else{
+			std::cout << "Mediator already register in pool " << *it << std::endl;
+		}
 	}
 	return ret;
 }

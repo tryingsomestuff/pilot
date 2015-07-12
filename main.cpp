@@ -38,14 +38,7 @@ int main(int argc,char ** argv){
 	RegisterToFactories();
 
 	Pilot pilot;
-	// read datas/commands from input file
-	pilot.Read("../../tasks.txt");
-	// effectively create datas and commands
-	pilot.Build();
-	// Build necessary mediators
-	pilot.RegisterMediators();
-	// Execute pilot
-	pilot.Execute();
+	pilot.Execute("../../tasks.txt");
 
 	return 0;
 }
