@@ -27,8 +27,10 @@ std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * 
 	std::set<std::string>::const_iterator it = mediatorTypes.cbegin();
 	std::cout << "Creating mediators for data " << command->GetData()->Name() << std::endl;
 	for( ; it != mediatorTypes.cend() ; ++it){
+		// add in DataPool if needed
 		if ( ! DataPool::Instance()->Contains(*it)){
 			std::cout << "Instantiating mediator " << *it << std::endl;
+			// delegate the mediator to DataPool
 			DataPool::Instance()->Register(MediatorFactory::Create(*it));
 			ret.push_back(DataPool::Instance()->GetMediator(*it));
 		}

@@ -27,6 +27,7 @@ int main(int argc,char ** argv){
 	MediatorFactory::Register(TraitMediatorName<Mediator2>::Name(), new MediatorCreator<Mediator2>);
 
 	///@todo from here a Pilot is needed
+	// delegate commands and datas to Pilot ???
 
 	// Indeed create those Datas and Commands
 	std::cout << "Instanciating data and commands" << std::endl;
@@ -48,5 +49,8 @@ int main(int argc,char ** argv){
 	for(unsigned int k = 0 ; k < tasks.size(); ++k){
 		tasks[k]->Execute();
 	}
+
+	// clean up ???
+
 	return 0;
 }
