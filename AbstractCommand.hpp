@@ -15,7 +15,7 @@ class AbstractCommand:public Named{
 		virtual ~AbstractCommand();
 
 		bool                  Execute(                );
-		void                  SetData(AbstractData * d);
+		void                  SetData(AbstractData * d);   // take ownership !!!
 		AbstractData *        GetData(                );
 		const AbstractData *  GetData(                )const;
 	protected:

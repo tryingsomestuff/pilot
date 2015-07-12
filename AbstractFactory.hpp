@@ -38,6 +38,7 @@ class AbstractFactory{
 public:
 	typedef KeyT DataType;
 
+	/// check if typeID is already present
 	static bool Contains(KeyT id){
 		if ( _map.find(id) != _map.end() ){
 			return true;

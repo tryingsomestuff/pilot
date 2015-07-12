@@ -16,4 +16,14 @@ class DataCreator : public Creator<DerivedType, AbstractData> {};
  **/
 typedef AbstractFactory<AbstractData,std::string> DataFactory;
 
+/**
+ *  Shortcut for specific register
+ **/
+namespace DataFactoryTools{
+template <class DerivedType>
+void Register(){
+   DataFactory::Register(TraitDataName<DerivedType>::Name(),new DataCreator<DerivedType>);
+}
+} // DataFactoryTools
+
 #endif // DATA__FACTORY__H

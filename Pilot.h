@@ -10,30 +10,37 @@
 
 class Pilot{
 public:
-	Pilot(){};
-	~Pilot(){}; // delete everthing ????
+	Pilot();
+	~Pilot();
+
+	void AddTasks(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands);
 
 	/**
 	 * Abstract Pilot builder ...
 	 * Will ask DataFactory and CommandFactory to instanciate object based on types "datas" and "commands"
 	 * Expect vetor of same length with each facade corresponding to the command with same index.
 	 **/
-	static
-	std::vector<AbstractCommand*>
-	Build(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands);
+	bool Build();
 
 	/**
 	 * Register all needed mediators for given DataTypes
 	 * Meditors needed for each data type is know so that
 	 * we can build up all the required meditors.
 	 **/
-	static
-	void
-	RegisterMediators(std::vector<AbstractCommand *> datas);
+	void RegisterMediators();
+
+	/**
+	 * Execute all commands in there registering order
+	 * well ... FIFO ...
+	 **/
+	void Execute();
 
 private:
 
+    std::vector<DataFactory::DataType>    _datasType;
+	std::vector<CommandFactory::DataType> _commandsType;
 
+	std::vector<AbstractCommand*> _commands;
 
 }; // Pilot
 

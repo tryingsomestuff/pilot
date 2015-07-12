@@ -14,43 +14,33 @@ int main(int argc,char ** argv){
 
 	// Register all Data ...
 	std::cout << "Registering Datas" << std::endl;
-	DataFactory::Register(TraitDataName<Data1>::Name(),new DataCreator<Data1>);
-	DataFactory::Register(TraitDataName<Data2>::Name(),new DataCreator<Data2>); // won't be used...
+	DataFactoryTools::Register<Data1>();
+	DataFactoryTools::Register<Data2>();
 
 	// Register all Command
 	std::cout << "Registering Commands" << std::endl;
-	CommandFactory::Register(TraitCommandName<Command1>::Name(),new CommandCreator<Command1>);
+	CommandFactoryTools::Register<Command1>();
 
 	// Register mediator
 	std::cout << "Registering Mediators" << std::endl;
-	MediatorFactory::Register(TraitMediatorName<Mediator1>::Name(), new MediatorCreator<Mediator1>);
-	MediatorFactory::Register(TraitMediatorName<Mediator2>::Name(), new MediatorCreator<Mediator2>);
+	MediatorFactoryTools::Register<Mediator1>();
+	MediatorFactoryTools::Register<Mediator2>();
 
-	///@todo from here a Pilot is needed
-	// delegate commands and datas to Pilot ???
-
-	// Indeed create those Datas and Commands
-	std::cout << "Instanciating data and commands" << std::endl;
+	// shall become pilot.Read(json);
 	std::vector<DataFactory::DataType> datas;
 	std::vector<CommandFactory::DataType> commands;
 	datas.push_back(TraitDataName<Data1>::Name());
 	commands.push_back(TraitCommandName<Command1>::Name());
 
-	std::vector<AbstractCommand*> tasks = Pilot::Build(datas,commands);
-
-	std::cout << "Registering mediators in DataPool" << std::endl;
-
+	Pilot pilot;
+	// just give the datas/commands list to pilot
+	pilot.AddTasks(datas,commands);
+	// effectively create datas and commands
+	pilot.Build();
 	// Build necessary mediators
-	Pilot::RegisterMediators(tasks);
-	
-	std::cout << "Executing pilot" << std::endl;
-
-	// Execute pilot :: Pilot.Execute();
-	for(unsigned int k = 0 ; k < tasks.size(); ++k){
-		tasks[k]->Execute();
-	}
-
-	// clean up ???
+	pilot.RegisterMediators();
+	// Execute pilot
+	pilot.Execute();
 
 	return 0;
 }

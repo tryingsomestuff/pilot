@@ -11,34 +11,52 @@
 
 typedef unsigned int uint;
 
-std::vector<AbstractCommand*> Pilot::Build(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands){
-	assert(datas.size() == commands.size());
+Pilot::Pilot(){}
 
-	std::vector<AbstractCommand*> ret;
-	for(uint k = 0 ; k < datas.size() ; ++k){
+Pilot::~Pilot(){
+	for(unsigned int k = 0 ; k < _commands.size(); ++k){
+		delete _commands[k];
+	}
+}
+
+
+void Pilot::AddTasks(std::vector<DataFactory::DataType> datas, std::vector<CommandFactory::DataType> commands){
+	std::cout << "Instanciating data and commands" << std::endl;
+	_datasType    = datas;
+	_commandsType = commands;
+}
+
+
+bool Pilot::Build(){
+	std::cout << "Registering mediators in DataPool" << std::endl;
+
+	assert(_datasType.size() == _commandsType.size());
+
+	for(uint k = 0 ; k < _datasType.size() ; ++k){
 		// instanciate data
-		AbstractData *    d = DataFactory::Create(datas[k]);
+		AbstractData *    d = DataFactory::Create(_datasType[k]);
 		if ( !d ){
 			std::cout << "Error data not built" << std::endl;
-			return std::vector<AbstractCommand*>();
+			return false;
 		}
 		// instanciate Command
-		AbstractCommand * c = CommandFactory::Create(commands[k]);
-		// link data with command
+		AbstractCommand * c = CommandFactory::Create(_commandsType[k]);
+		// link data with command and delegate ownership
 		c->SetData(d);
 		if ( !c ){
 			std::cout << "Error command not built" << std::endl;
-			return std::vector<AbstractCommand*>();
+			return false;
 		}
-		ret.push_back(c);
+		// append to internal command list
+		_commands.push_back(c);
 	}
-	return ret;
+	return true;
 }
 
-void Pilot::RegisterMediators(std::vector<AbstractCommand *> commands){
-	for(uint k = 0 ; k < commands.size() ; ++k){
+void Pilot::RegisterMediators(){
+	for(uint k = 0 ; k < _commands.size() ; ++k){
 		// instanciate needed mediators
-		std::vector<AbstractMediator*> mediators = MediatorBuilder::Create(commands[k]);
+		std::vector<AbstractMediator*> mediators = MediatorBuilder::Create(_commands[k]);
 		for (uint m = 0 ; m < mediators.size(); ++m){
 			std::cout << std::string("Init mediator ") + mediators[m]->Name() << std::endl;
 			if ( ! mediators[m]->Init() ){
@@ -48,3 +66,9 @@ void Pilot::RegisterMediators(std::vector<AbstractCommand *> commands){
 	}
 }
 
+void Pilot::Execute(){
+	std::cout << "Executing pilot" << std::endl;
+	for(unsigned int k = 0 ; k < _commands.size(); ++k){
+		_commands[k]->Execute();
+	}
+}

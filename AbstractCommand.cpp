@@ -8,7 +8,10 @@ AbstractCommand::AbstractCommand():_d(0){
 }
 
 AbstractCommand::~AbstractCommand(){
-
+	if ( _d ){
+		delete _d;
+		_d=0;
+	}
 }
 
 bool AbstractCommand::Execute(){
