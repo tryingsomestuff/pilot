@@ -7,12 +7,13 @@
 #include "Trait.hpp"
 #include "Named.hpp"
 #include "MediatorFactory.h"
+#include "DataFactory.h"
 
 /**
  *  Abstract facade to DataPool singleton container
  *  Note that this facade shall also be a proxy (think late-init, buffered, access to distant data, ...)
  **/
-class AbstractData: public Named<std::string>{
+class AbstractData: public Named<DataFactory::DataType>{
     public:
         AbstractData();
         virtual ~AbstractData();

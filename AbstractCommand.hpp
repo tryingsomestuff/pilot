@@ -10,7 +10,7 @@ class AbstractData;
  *  Abstract command, use an AbstractData (facade) to access specified data from mediators in the DataPool
  *  _Execute must be defined in sub class to implement real stuff ...
  **/
-class AbstractCommand:public Named<std::string>{
+class AbstractCommand:public Named<CommandFactory::DataType>{
 	public:
 		explicit AbstractCommand();
 		virtual ~AbstractCommand();

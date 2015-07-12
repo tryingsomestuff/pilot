@@ -18,7 +18,7 @@ class Command1 : public AbstractCommandBase<Command1>{
 
 template<>
 struct TraitCommandId<Command1>{
-    static std::string Id(){return "command1";}
+    static CommandFactory::DataType Id(){return "command1";}
 };
 
 #endif // COMMAND__1__H

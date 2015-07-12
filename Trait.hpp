@@ -20,7 +20,7 @@
  **/
 template<class T>
 struct TraitMediatorId{
-	static MediatorFactory::DataType Id(){return -1;} // nothing means bad ...
+	static MediatorFactory::DataType Id(){return MediatorFactory::DataType();} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTMEDIATOR
 
@@ -30,7 +30,7 @@ struct TraitMediatorId{
  **/
 template<class T>
 struct TraitDataId{
-	static DataFactory::DataType Id(){return "";} // nothing means bad ...
+	static DataFactory::DataType Id(){return DataFactory::DataType();} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
 
@@ -40,7 +40,7 @@ struct TraitDataId{
  **/
 template<class T>
 struct TraitCommandId{
-	static CommandFactory::DataType Id(){return "";} // nothing means bad ...
+	static CommandFactory::DataType Id(){return CommandFactory::DataType();} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
 
