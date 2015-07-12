@@ -3,9 +3,8 @@
 // Must defined corresponding static members ...
 
 /*
-AbstractFactory<AbstractCommand,std::string> *
-AbstractFactory<AbstractCommand,std::string>::_instance = NULL;
+CommandFactory * CommandFactory::_instance = NULL;
 */
 
-std::map<std::string,CreatorBase<AbstractCommand>*> 
-AbstractFactory<AbstractCommand,std::string>::_map = std::map<std::string,CreatorBase<AbstractCommand>*>();
+std::map<CommandFactory::DataType,CreatorBase<AbstractCommand>*> 
+CommandFactory::_map = std::map<CommandFactory::DataType,CreatorBase<AbstractCommand>*>();

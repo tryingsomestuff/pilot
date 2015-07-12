@@ -23,8 +23,8 @@ class Mediator2 : public AbstractMediatorBase<Mediator2>{
 };
 
 template<>
-struct TraitMediatorName<Mediator2>{
-    static std::string Name(){return "med2";}
+struct TraitMediatorId<Mediator2>{
+    static int Id(){return 2;}
 };
 
 #endif // MEDIATOR__2___H

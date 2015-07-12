@@ -1,10 +1,13 @@
 #ifndef DATA__POOOL__H
 #define DATA__POOOL__H
 
+#include "MediatorFactory.h"
+
 class AbstractMediator;
 
 #include <map>
 #include <iostream>
+
 
 /**
  *  The DataPool singleton.
@@ -17,12 +20,12 @@ class DataPool{ // singleton
 		static DataPool *  Instance();
 		// Delegate mediator to DataPool
 		void               Register   (AbstractMediator * mediator);
-		AbstractMediator * GetMediator(std::string name);
-		bool               Contains   (std::string name);
+		AbstractMediator * GetMediator(MediatorFactory::DataType type);
+		bool               Contains   (MediatorFactory::DataType type);
 	private:
 		explicit DataPool(){};
 		static DataPool * _pool;
-		std::map<std::string,AbstractMediator * > _mediators;
+		std::map<MediatorFactory::DataType,AbstractMediator * > _mediators;
 };
 
 #endif // DATA__POOOL__H

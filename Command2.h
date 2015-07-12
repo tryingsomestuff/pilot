@@ -3,8 +3,6 @@
 
 #include "AbstractCommand.hpp"
 
-#include <string>
-
 class Data2;
 
 /**
@@ -19,8 +17,8 @@ class Command2 : public AbstractCommandBase<Command2>{
 
 
 template<>
-struct TraitCommandName<Command2>{
-    static std::string Name(){return "command2";}
+struct TraitCommandId<Command2>{
+    static std::string Id(){return "command2";}
 };
 
 #endif // COMMAND__1__H

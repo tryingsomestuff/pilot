@@ -12,18 +12,17 @@
 // Must defined corresponding static members ...
 
 /*
-AbstractFactory<AbstractMediator,std::string> *
-AbstractFactory<AbstractMediator,std::string>::_instance = NULL;
+MediatorFactory * MediatorFactory::_instance = NULL;
 */
 
-std::map<std::string,CreatorBase<AbstractMediator>*> 
-AbstractFactory<AbstractMediator,std::string>::_map = std::map<std::string,CreatorBase<AbstractMediator>*>();
+std::map<MediatorFactory::DataType,CreatorBase<AbstractMediator>*> 
+MediatorFactory::_map = std::map<MediatorFactory::DataType,CreatorBase<AbstractMediator>*>();
 
 std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command){
 	std::vector<AbstractMediator *> ret;
-	const std::set<std::string> mediatorTypes = command->GetData()->GetMediatorTypes();
-	std::set<std::string>::const_iterator it = mediatorTypes.cbegin();
-	std::cout << "Creating mediators for data " << command->GetData()->Name() << std::endl;
+	const std::set<MediatorFactory::DataType> mediatorTypes = command->GetData()->GetMediatorTypes();
+	std::set<MediatorFactory::DataType>::const_iterator it = mediatorTypes.cbegin();
+	std::cout << "Creating mediators for data " << command->GetData()->Id() << std::endl;
 	for( ; it != mediatorTypes.cend() ; ++it){
 		// add in DataPool if needed
 		if ( ! DataPool::Instance()->Contains(*it)){

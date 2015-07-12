@@ -11,7 +11,7 @@
  *  some functional stuff also, and AbstractCommand::_Execute
  *  will eventually use those throught data facades...
  **/
-class AbstractMediator: public Named{
+class AbstractMediator: public Named<int>{
 	public:
 		// is the mediator data ready to be used ?
 		enum M_Status{
@@ -36,7 +36,7 @@ template< class T >
 class AbstractMediatorBase : public AbstractMediator{
    public:
        AbstractMediatorBase():AbstractMediator(){
-          _name = TraitMediatorName<T>::Name();
+          _id = TraitMediatorId<T>::Id();
        }
 };
 

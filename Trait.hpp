@@ -3,11 +3,12 @@
 
 #include <string>
 
+template <class T>
 class Named{
 public:
-	inline std::string Name()const {return _name;};
+	inline T Id()const {return _id;};
 protected:
-	std::string _name;
+	T _id;
 };
 
 /**
@@ -22,8 +23,8 @@ protected:
  *  AbstractMediator::Name is virtual ...)
  **/
 template<class T>
-struct TraitMediatorName{
-    static std::string Name(){return "";} // nothing means bad ...
+struct TraitMediatorId{
+    static int Id(){return -1;} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTMEDIATOR
 
@@ -32,8 +33,8 @@ struct TraitMediatorName{
  *  Same comment as for mediator
  **/
 template<class T>
-struct TraitDataName{
-    static std::string Name(){return "";} // nothing means bad ...
+struct TraitDataId{
+    static std::string Id(){return "";} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
 
@@ -42,8 +43,8 @@ struct TraitDataName{
  *  Same comment as for mediator
  **/
 template<class T>
-struct TraitCommandName{
-    static std::string Name(){return "";} // nothing means bad ...
+struct TraitCommandId{
+    static std::string Id(){return "";} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
 

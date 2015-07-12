@@ -21,7 +21,7 @@ Command2::~Command2(){
 bool Command2::_Execute(){
 	Data2 * d = dynamic_cast<Data2*>(_d);
 	assert(d!=0);
-	std::cout << "Hello " << d->Name() << std::endl;
+	std::cout << "Hello " << d->Id() << std::endl;
 	std::cout << "Tata  " << d->Tata() << std::endl;
 	std::cout << "Bli   " << d->Bli() << std::endl;
 

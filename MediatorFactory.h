@@ -16,7 +16,8 @@ class MediatorCreator : public Creator<DerivedType, AbstractMediator> {};
 /**
  *  Factory of mediator
  **/
-typedef AbstractFactory<AbstractMediator,std::string> MediatorFactory;
+typedef AbstractFactory<AbstractMediator,int> MediatorFactory;
+// previous line defines MediatorFactory::DataType as std::string
 
 /**
  *  Shortcut for specific register
@@ -24,7 +25,7 @@ typedef AbstractFactory<AbstractMediator,std::string> MediatorFactory;
 namespace MediatorFactoryTools{
 template <class DerivedType>
 void Register(){
-   MediatorFactory::Register(TraitMediatorName<DerivedType>::Name(),new MediatorCreator<DerivedType>);
+   MediatorFactory::Register(TraitMediatorId<DerivedType>::Id(),new MediatorCreator<DerivedType>);
 }
 } // DataFactoryTools
 

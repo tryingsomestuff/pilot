@@ -13,8 +13,9 @@
 
 /**
  * The user is responsible for registering 
- * needed type of datas, commands and mediator to 
+ * needed type of datas, commands and mediators to 
  * the corresponding factories !
+ * Too much is not a problem ... Those are not instanciation, just registering !
  **/ 
 void RegisterToFactories(){
 	// Register all Data ...

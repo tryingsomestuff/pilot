@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <set>
-#include <string>
 
 #include "Trait.hpp"
 #include "MediatorFactory.h"
@@ -12,15 +11,15 @@
  *  Abstract facade to DataPool singleton container
  *  Note that this facade shall also be a proxy (think late-init, buffered, access to distant data, ...)
  **/
-class AbstractData: public Named{
+class AbstractData: public Named<std::string>{
     public:
         AbstractData();
         virtual ~AbstractData();
 
-		void                        AddDepend       (std::string m );
-		const std::set<std::string> GetMediatorTypes(              )const;
+		void                                      AddDepend       (MediatorFactory::DataType m );
+		const std::set<MediatorFactory::DataType> GetMediatorTypes(                            )const;
     private:
-		std::set<std::string> _mediatorTypes;
+		std::set<MediatorFactory::DataType> _mediatorTypes;
 };
 
 /**
@@ -32,7 +31,7 @@ template< class T >
 class AbstractDataBase : public AbstractData{
    public:
        AbstractDataBase():AbstractData(){
-          _name = TraitDataName<T>::Name();
+          _id = TraitDataId<T>::Id();
        }
 };
 

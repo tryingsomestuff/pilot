@@ -17,6 +17,7 @@ class CommandCreator : public Creator<DerivedType, AbstractCommand> {};
  * Factory of command
  **/
 typedef AbstractFactory<AbstractCommand,std::string> CommandFactory;
+// previous line defines CommandFactory::DataType as std::string
 
 /**
  *  Shortcut for specific register
@@ -24,7 +25,7 @@ typedef AbstractFactory<AbstractCommand,std::string> CommandFactory;
 namespace CommandFactoryTools{
 template <class DerivedType>
 void Register(){
-   CommandFactory::Register(TraitCommandName<DerivedType>::Name(),new CommandCreator<DerivedType>);
+   CommandFactory::Register(TraitCommandId<DerivedType>::Id(),new CommandCreator<DerivedType>);
 }
 } // CommandFactoryTools
 

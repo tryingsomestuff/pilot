@@ -59,9 +59,9 @@ void Pilot::RegisterMediators(){
 		// instanciate needed mediators
 		std::vector<AbstractMediator*> mediators = MediatorBuilder::Create(_commands[k]);
 		for (uint m = 0 ; m < mediators.size(); ++m){
-			std::cout << std::string("Init mediator ") + mediators[m]->Name() << std::endl;
+			std::cout << "Init mediator " << mediators[m]->Id() << std::endl;
 			if ( ! mediators[m]->Init() ){
-				std::cout << std::string("Fail to init mediator ") + mediators[m]->Name() << std::endl;
+				std::cout << "Fail to init mediator " << mediators[m]->Id() << std::endl;
 			}
 		}
 	}
@@ -76,7 +76,8 @@ void Pilot::Execute(){
 
 void Pilot::Read(std::string fileName){
 	std::ifstream file(fileName);
-    std::string dataType,commandType;
+	DataFactory::DataType dataType;
+	CommandFactory::DataType commandType;
 	while (file >> dataType >> commandType){
         AddTask(dataType,commandType);       
     }

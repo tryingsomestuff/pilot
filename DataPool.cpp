@@ -1,13 +1,14 @@
 #include "DataPool.h"
 #include "Trait.hpp"
 #include "AbstractMediator.hpp"
+#include "MediatorFactory.h"
 
 #include <stdlib.h>
 #include <string>
 #include <iostream>
 #include <assert.h>
 
-typedef std::map<std::string,AbstractMediator *>::iterator _m_it;
+typedef std::map<MediatorFactory::DataType,AbstractMediator *>::iterator _m_it;
 
 DataPool::~DataPool(){
 	_m_it it = _mediators.begin();
@@ -27,7 +28,7 @@ DataPool * DataPool::Instance(){
 // Delegate mediator to DataPool
 void DataPool::Register(AbstractMediator * mediator){
 	assert(mediator!=0);
-	if ( GetMediator(mediator->Name()) != NULL ){
+	if ( GetMediator(mediator->Id()) != NULL ){
 		std::cout << "Mediator already present in DataPool" << std::endl;
 		// HORRIBLE !!!
 		// just pay the cost of instanciation and delete it right now !!!
@@ -35,21 +36,21 @@ void DataPool::Register(AbstractMediator * mediator){
 		delete mediator;
 		return;
 	}
-	std::cout << std::string("Registering mediator ") << mediator->Name() << std::endl;
-	_mediators[mediator->Name()] = mediator;
+	std::cout << "Registering mediator " << mediator->Id() << std::endl;
+	_mediators[mediator->Id()] = mediator;
 }
 
-AbstractMediator * DataPool::GetMediator(std::string name){
-	if ( _mediators.find( name ) != _mediators.end() ){
-		return _mediators[name];
+AbstractMediator * DataPool::GetMediator(MediatorFactory::DataType type){
+	if ( _mediators.find( type ) != _mediators.end() ){
+		return _mediators[type];
 	}
 	else{
 		return NULL;
 	}
 }
 
-bool DataPool::Contains(std::string name){
-    return GetMediator(name)!=NULL;
+bool DataPool::Contains(MediatorFactory::DataType type){
+    return GetMediator(type)!=NULL;
 }
 
 DataPool * DataPool::_pool = NULL;

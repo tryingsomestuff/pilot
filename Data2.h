@@ -18,8 +18,8 @@ class Data2 : public AbstractDataBase<Data2>{
 };
 
 template<>
-struct TraitDataName<Data2>{
-    static std::string Name(){return "data2";}
+struct TraitDataId<Data2>{
+    static std::string Id(){return "data2";}
 };
 
 #endif // DATA__2__H

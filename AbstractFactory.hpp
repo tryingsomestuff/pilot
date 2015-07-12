@@ -32,7 +32,8 @@ public:
 * Used to register new KeyT/Creator pair
 * Contains a map of corresponding creators
 * The main constrain is that Create() function do not take any argument
-* Please note that KeyT MUST be serializable (operator<<) 
+* Please note that KeyT (DataType) MUST be serializable with operator<< 
+* and have operator== implemented
 * May be converted to singleton to avoid memory leak
 **/
 template <class T, class KeyT>
