@@ -17,6 +17,8 @@ class DataCreator : public Creator<DerivedType, AbstractData> {};
 typedef AbstractFactory<AbstractData,std::string> DataFactory;
 // previous line defines DataFactory::DataType as std::string
 
+#include "Trait.hpp"
+
 /**
  *  Shortcut for specific register
  **/

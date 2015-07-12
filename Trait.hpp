@@ -3,13 +3,9 @@
 
 #include <string>
 
-template <class T>
-class Named{
-public:
-	inline T Id()const {return _id;};
-protected:
-	T _id;
-};
+#include "MediatorFactory.h"
+#include "DataFactory.h"
+#include "CommandFactory.h"
 
 /**
  *  Trait for mediator Name.
@@ -24,7 +20,7 @@ protected:
  **/
 template<class T>
 struct TraitMediatorId{
-    static int Id(){return -1;} // nothing means bad ...
+	static MediatorFactory::DataType Id(){return -1;} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTMEDIATOR
 
@@ -34,7 +30,7 @@ struct TraitMediatorId{
  **/
 template<class T>
 struct TraitDataId{
-    static std::string Id(){return "";} // nothing means bad ...
+	static DataFactory::DataType Id(){return "";} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
 
@@ -44,7 +40,7 @@ struct TraitDataId{
  **/
 template<class T>
 struct TraitCommandId{
-    static std::string Id(){return "";} // nothing means bad ...
+	static CommandFactory::DataType Id(){return "";} // nothing means bad ...
 };
 // DEFINE SPECIALIZATION FOR EACH CHILD OF ABSTRACTDATA
 

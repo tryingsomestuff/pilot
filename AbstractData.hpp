@@ -5,6 +5,7 @@
 #include <set>
 
 #include "Trait.hpp"
+#include "Named.hpp"
 #include "MediatorFactory.h"
 
 /**

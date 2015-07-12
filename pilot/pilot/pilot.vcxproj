@@ -25,6 +25,7 @@
     <ClInclude Include="..\..\Mediator1.h" />
     <ClInclude Include="..\..\Mediator2.h" />
     <ClInclude Include="..\..\MediatorFactory.h" />
+    <ClInclude Include="..\..\Named.hpp" />
     <ClInclude Include="..\..\Pilot.h" />
     <ClInclude Include="..\..\Trait.hpp" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 #define ABSTRACT___COMMAND__H
 
 #include "Trait.hpp"
+#include "Named.hpp"
 
 class AbstractData;
 

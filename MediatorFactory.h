@@ -4,8 +4,9 @@
 #include <vector>
 
 #include "AbstractFactory.hpp"
-#include "AbstractMediator.hpp"
+
 class AbstractCommand;
+class AbstractMediator;
 
 /**
  *  Creator of Mediator
@@ -18,6 +19,8 @@ class MediatorCreator : public Creator<DerivedType, AbstractMediator> {};
  **/
 typedef AbstractFactory<AbstractMediator,int> MediatorFactory;
 // previous line defines MediatorFactory::DataType as std::string
+
+#include "Trait.hpp"
 
 /**
  *  Shortcut for specific register

@@ -5,7 +5,6 @@ class AbstractCommand;
 class AbstractData;
 
 #include "AbstractFactory.hpp"
-#include "Trait.hpp"
 
 /**
  * Command creator
@@ -18,6 +17,8 @@ class CommandCreator : public Creator<DerivedType, AbstractCommand> {};
  **/
 typedef AbstractFactory<AbstractCommand,std::string> CommandFactory;
 // previous line defines CommandFactory::DataType as std::string
+
+#include "Trait.hpp"
 
 /**
  *  Shortcut for specific register

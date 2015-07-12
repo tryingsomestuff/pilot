@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Trait.hpp"
+#include "Named.hpp"
 
 /**
  *  Abstract mediator container. Encapsulate any type of data.
