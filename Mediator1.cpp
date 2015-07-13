@@ -19,5 +19,6 @@ AbstractMediator::M_Status Mediator1::Status()const{
 }
 
 bool Mediator1::Init(){
+
   return true;
 }

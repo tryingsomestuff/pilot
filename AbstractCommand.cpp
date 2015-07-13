@@ -32,5 +32,9 @@ AbstractData * AbstractCommand::GetData(){
 }
 
 const AbstractData * AbstractCommand::GetData()const{
+	if (! _d){
+		std::cout << "WARNING :: Data pointer is not set yet, use SetData" << std::endl;
+		return NULL;
+	}
 	return _d;
 }

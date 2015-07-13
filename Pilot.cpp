@@ -21,13 +21,11 @@ Pilot::~Pilot(){
 	}
 }
 
-
 void Pilot::AddTask(DataType data, CommandType command){
 	std::cout << "Adding task " << data << " : " << command << std::endl;
 	_datasType.push_back(data);
 	_commandsType.push_back(command);
 }
-
 
 bool Pilot::Build(){
 	std::cout << "Instanciating necessary commands and datas" << std::endl;
@@ -80,7 +78,7 @@ void Pilot::Read(std::string fileName){
 
 void Pilot::Execute(std::string filename){
 	Read(filename);
-	Build();
+	if ( ! Build()) return;
 	RegisterMediators();
 	Execute();
 }

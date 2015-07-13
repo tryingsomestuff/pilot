@@ -16,6 +16,9 @@
  * needed type of datas, commands and mediators to 
  * the corresponding factories !
  * Too much is not a problem ... Those are not instanciation, just registering !
+ *
+ * DO NOT TRY TO DO THIS AUTOMATICALLY in like dummy object because of the 
+ * static init order fiasco (https://isocpp.org/wiki/faq/ctors#static-init-order-on-first-use)
  **/ 
 void RegisterToFactories(){
 	// Register all Data ...

@@ -9,6 +9,7 @@
 
 #include <string>
 #include <set>
+#include <assert.h>
 
 // Must defined corresponding static members ...
 
@@ -21,10 +22,18 @@ MediatorFactory::_map = std::map<MediatorType,CreatorBase<AbstractMediator>*>();
 
 
 std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command){
+	assert(command);
 	std::vector<AbstractMediator *> ret;
-	const std::set<MediatorType> mediatorTypes = command->GetData()->GetMediatorTypes();
+	// get data from command and get mediators types from data
+	const AbstractData * d = command->GetData();
+	if ( ! d ){
+		std::cout << "ERROR : data not set yet for command " << command->Id() << std::endl;
+		return ret;
+	}
+	const std::set<MediatorType> mediatorTypes = d->GetMediatorTypes();
+	// iterate other needed mediators for current data
+	std::cout << "Creating mediators for data " << d->Id() << std::endl;
 	std::set<MediatorType>::const_iterator it = mediatorTypes.cbegin();
-	std::cout << "Creating mediators for data " << command->GetData()->Id() << std::endl;
 	for( ; it != mediatorTypes.cend() ; ++it){
 		// add in DataPool if needed
 		if ( ! DataPool::Instance()->Contains(*it)){

@@ -11,21 +11,22 @@ public:
 	~Pilot();
 
 	/**
-	 * Tell the pilot the sequence of datas/commands that will be run
+	 * Add a data/command couple to the sequence that will be run
 	 **/
 	void AddTask(DataType datas, CommandType commands);
 
 	/**
-	 * Abstract Pilot builder ...
 	 * Will ask DataFactory and CommandFactory to instanciate object based on types "datas" and "commands"
-	 * Expect vetor of same length with each facade corresponding to the command with same index.
+	 * Expect _datasType and _commandsType vectors of same length with each facade corresponding to the command with same index.
 	 **/
 	bool Build();
 
 	/**
 	 * Register all needed mediators for given DataTypes
-	 * Meditors needed for each data type is know so that
+	 * Meditors needed for each data type is known so that
 	 * we can build up all the required meditors.
+	 * After being constructed, mediators are Register to DataPool
+	 * and then initialized.
 	 **/
 	void RegisterMediators();
 
