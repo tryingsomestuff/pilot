@@ -30,8 +30,7 @@ void Pilot::AddTask(DataType data, CommandType command){
 
 
 bool Pilot::Build(){
-	std::cout << "Registering mediators in DataPool" << std::endl;
-
+	std::cout << "Instanciating necessary commands and datas" << std::endl;
 	assert(_datasType.size() == _commandsType.size());
 
 	for(uint k = 0 ; k < _datasType.size() ; ++k){
@@ -43,12 +42,12 @@ bool Pilot::Build(){
 		}
 		// instanciate Command
 		AbstractCommand * c = CommandFactory::Create(_commandsType[k]);
-		// link data with command and delegate ownership
-		c->SetData(d);
 		if ( !c ){
 			std::cout << "Error command not built" << std::endl;
 			return false;
 		}
+		// link data with command and delegate ownership
+		c->SetData(d);
 		// append to internal command list
 		_commands.push_back(c);
 	}
@@ -56,15 +55,10 @@ bool Pilot::Build(){
 }
 
 void Pilot::RegisterMediators(){
+	std::cout << "Registering mediators in DataPool" << std::endl;
 	for(uint k = 0 ; k < _commands.size() ; ++k){
 		// instanciate needed mediators
 		std::vector<AbstractMediator*> mediators = MediatorBuilder::Create(_commands[k]);
-		for (uint m = 0 ; m < mediators.size(); ++m){
-			std::cout << "Init mediator " << mediators[m]->Id() << std::endl;
-			if ( ! mediators[m]->Init() ){
-				std::cout << "Fail to init mediator " << mediators[m]->Id() << std::endl;
-			}
-		}
 	}
 }
 

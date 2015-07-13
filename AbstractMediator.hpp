@@ -6,7 +6,7 @@
 
 /**
  *  Abstract mediator container. Encapsulate any type of data.
- *  All data container must inherit from this one.
+ *  All mediator container must inherit from this one.
  *  Note that in some case mediators will probably contains
  *  some functional stuff also, and AbstractCommand::_Execute
  *  will eventually use those throught data facades...
@@ -16,15 +16,15 @@ class AbstractMediator: public Named<MediatorType>{
 		// is the mediator data ready to be used ?
 		enum M_Status{
 			M_READY     = 0,
-			M_BAD       = 1,
-			M_NOT_READY = 2
+			M_BAD       = -1,
+			M_NOT_READY = -2
 		};
         AbstractMediator();
 		virtual ~AbstractMediator();
 		/// Is the mediator data ready to be used ?
 		virtual M_Status Status()const = 0;
 		/// Init() will be called just after the mediator is registered
-		virtual bool     Init()   = 0;
+		virtual bool     Init()        = 0;
 };
 
 /**

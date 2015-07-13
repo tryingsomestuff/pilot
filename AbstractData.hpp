@@ -14,7 +14,7 @@ class AbstractData: public Named<DataType>{
     public:
         AbstractData();
         virtual ~AbstractData();
-
+		/// Data must maintain a set of needed mediators
 		void                         AddDepend       (MediatorType m );
 		const std::set<MediatorType> GetMediatorTypes(                )const;
     private:

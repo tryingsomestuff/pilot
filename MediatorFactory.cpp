@@ -5,6 +5,7 @@
 #include "DataFactory.h"
 #include "AbstractCommand.hpp"
 #include "AbstractData.hpp"
+#include "AbstractMediator.hpp"
 
 #include <string>
 #include <set>
@@ -18,6 +19,7 @@ MediatorFactory * MediatorFactory::_instance = NULL;
 std::map<MediatorType,CreatorBase<AbstractMediator>*> 
 MediatorFactory::_map = std::map<MediatorType,CreatorBase<AbstractMediator>*>();
 
+
 std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command){
 	std::vector<AbstractMediator *> ret;
 	const std::set<MediatorType> mediatorTypes = command->GetData()->GetMediatorTypes();
@@ -29,7 +31,11 @@ std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * 
 			std::cout << "Instantiating mediator " << *it << std::endl;
 			// delegate the mediator to DataPool
 			DataPool::Instance()->Register(MediatorFactory::Create(*it));
-			ret.push_back(DataPool::Instance()->GetMediator(*it));
+			AbstractMediator * med = DataPool::Instance()->GetMediator(*it);
+			if ( ! med->Init() ){
+				std::cout << "Fail to init mediator " << med->Id() << std::endl;
+			}
+			ret.push_back(med);
 		}
 		else{
 			std::cout << "Mediator already register in pool " << *it << std::endl;
