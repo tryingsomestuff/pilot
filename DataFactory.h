@@ -13,16 +13,16 @@ class AbstractData;
 template <class DerivedType>
 class DataCreator : public Creator<DerivedType, AbstractData> {};
 
-class DataType{ // just an example ...
+class UserDataType{ // just an example ...
 public:
-	DataType();
-	DataType(std::string s);
-	~DataType();
-	friend std::ostream& operator <<(std::ostream&, const DataType&);
-	friend std::istream& operator >>(std::istream&, DataType&);
-	bool operator == (const DataType & t)const;
-	bool operator <  (const DataType & t)const;
-	bool operator >  (const DataType & t)const;
+	UserDataType();
+	UserDataType(std::string s);
+	~UserDataType();
+	friend std::ostream& operator <<(std::ostream&, const UserDataType&);
+	friend std::istream& operator >>(std::istream&, UserDataType&);
+	bool operator == (const UserDataType & t)const;
+	bool operator <  (const UserDataType & t)const;
+	bool operator >  (const UserDataType & t)const;
 private:
 	std::string a;
 };
@@ -30,8 +30,9 @@ private:
 /**
  *  Factory of data facade
  **/
-typedef AbstractFactory<AbstractData,DataType> DataFactory;
-// previous line defines DataFactory::DataType as std::string
+typedef AbstractFactory<AbstractData,UserDataType> DataFactory;
+// previous line defines DataFactory::KeyType as DataType
+typedef DataFactory::KeyType DataType;
 
 // late include is MANDATORY
 #include "Trait.hpp"

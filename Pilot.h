@@ -16,7 +16,7 @@ public:
 	/**
 	 * Tell the pilot the sequence of datas/commands that will be run
 	 **/
-	void AddTask(DataFactory::DataType datas, CommandFactory::DataType commands);
+	void AddTask(DataType datas, CommandType commands);
 
 	/**
 	 * Abstract Pilot builder ...
@@ -53,8 +53,8 @@ public:
 
 private:
 
-    std::vector<DataFactory::DataType>    _datasType;
-	std::vector<CommandFactory::DataType> _commandsType;
+    std::vector<DataType>    _datasType;
+	std::vector<CommandType> _commandsType;
 
 	std::vector<AbstractCommand*> _commands;
 

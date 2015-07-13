@@ -21,7 +21,7 @@ Pilot::~Pilot(){
 }
 
 
-void Pilot::AddTask(DataFactory::DataType data, CommandFactory::DataType command){
+void Pilot::AddTask(DataType data, CommandType command){
 	std::cout << "Adding task " << data << " : " << command << std::endl;
 	_datasType.push_back(data);
 	_commandsType.push_back(command);
@@ -76,8 +76,8 @@ void Pilot::Execute(){
 
 void Pilot::Read(std::string fileName){
 	std::ifstream file(fileName);
-	DataFactory::DataType dataType;
-	CommandFactory::DataType commandType;
+	DataType dataType;
+	CommandType commandType;
 	while (file >> dataType >> commandType){
         AddTask(dataType,commandType);       
     }

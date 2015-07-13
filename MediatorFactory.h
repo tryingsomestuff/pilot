@@ -18,7 +18,8 @@ class MediatorCreator : public Creator<DerivedType, AbstractMediator> {};
  *  Factory of mediator
  **/
 typedef AbstractFactory<AbstractMediator,int> MediatorFactory;
-// previous line defines MediatorFactory::DataType as int
+// previous line defines MediatorFactory::KeyType as int
+typedef MediatorFactory::KeyType MediatorType;
 
 // late include is MANDATORY
 #include "Trait.hpp"

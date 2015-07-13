@@ -8,10 +8,10 @@ AbstractData::~AbstractData(){
 
 }
 
-void AbstractData::AddDepend(MediatorFactory::DataType m){
+void AbstractData::AddDepend(MediatorType m){
 	_mediatorTypes.insert(m);
 }
 
-const std::set<MediatorFactory::DataType> AbstractData::GetMediatorTypes()const{
+const std::set<MediatorType> AbstractData::GetMediatorTypes()const{
 	return _mediatorTypes;
 }

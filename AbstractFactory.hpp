@@ -32,7 +32,7 @@ public:
 * Used to register new KeyT/Creator pair
 * Contains a map of corresponding creators
 * The main constrain is that Create() function do not take any argument
-* Please note that KeyT (DataType) MUST be :
+* Please note that KeyT (KeyType) MUST be :
 *      - serializable with operator<< 
 *      - serializable with operator>> 
 *      - have operator== implemented
@@ -44,7 +44,7 @@ public:
 template <class T, class KeyT>
 class AbstractFactory{
 public:
-	typedef KeyT DataType;
+	typedef KeyT KeyType;
 
 	/// check if typeID is already present
 	static bool Contains(KeyT id){

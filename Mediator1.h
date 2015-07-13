@@ -24,7 +24,7 @@ class Mediator1 : public AbstractMediatorBase<Mediator1>{
 
 template<>
 struct TraitMediatorId<Mediator1>{
-	static MediatorFactory::DataType Id(){return 1;}
+	static MediatorType Id(){return 1;}
 };
 
 #endif // MEDIATOR__1___H

@@ -6,41 +6,41 @@
 DataFactory * DataFactory::_instance = NULL;
 */
 
-DataType::DataType(){
+UserDataType::UserDataType(){
 	a="";
 };
 
-DataType::DataType(std::string s){
+UserDataType::UserDataType(std::string s){
 	a=s;
 };
 
-DataType::~DataType(){
+UserDataType::~UserDataType(){
 
 };
 
-bool DataType::operator == (const DataType & t)const{
+bool UserDataType::operator == (const UserDataType & t)const{
 	return (t.a == this->a);
 }
 
-bool DataType::operator < (const DataType & t)const{
+bool UserDataType::operator < (const UserDataType & t)const{
 	return (t.a > this->a);
 }
-bool DataType::operator > (const DataType & t)const{
+bool UserDataType::operator > (const UserDataType & t)const{
 	return (t.a < this->a);
 }
 
-std::ostream& operator <<(std::ostream& str, const DataType& obj){
+std::ostream& operator <<(std::ostream& str, const UserDataType& obj){
 	str.operator<<(obj.a.c_str());
 	return str;
 }
 
-std::istream& operator >>(std::istream& str, DataType& obj){
+std::istream& operator >>(std::istream& str, UserDataType& obj){
 	str >> obj.a;
 	return str;
 }
 
 
-std::map<DataFactory::DataType,CreatorBase<AbstractData>*> 
-DataFactory::_map = std::map<DataFactory::DataType,CreatorBase<AbstractData>*>();
+std::map<DataType,CreatorBase<AbstractData>*> 
+DataFactory::_map = std::map<DataType,CreatorBase<AbstractData>*>();
 
 

@@ -8,7 +8,7 @@
 #include <iostream>
 #include <assert.h>
 
-typedef std::map<MediatorFactory::DataType,AbstractMediator *>::iterator _m_it;
+typedef std::map<MediatorType,AbstractMediator *>::iterator _m_it;
 
 DataPool::~DataPool(){
 	_m_it it = _mediators.begin();
@@ -40,7 +40,7 @@ void DataPool::Register(AbstractMediator * mediator){
 	_mediators[mediator->Id()] = mediator;
 }
 
-AbstractMediator * DataPool::GetMediator(MediatorFactory::DataType type){
+AbstractMediator * DataPool::GetMediator(MediatorType type){
 	if ( _mediators.find( type ) != _mediators.end() ){
 		return _mediators[type];
 	}
@@ -49,7 +49,7 @@ AbstractMediator * DataPool::GetMediator(MediatorFactory::DataType type){
 	}
 }
 
-bool DataPool::Contains(MediatorFactory::DataType type){
+bool DataPool::Contains(MediatorType type){
     return GetMediator(type)!=NULL;
 }
 

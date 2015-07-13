@@ -12,7 +12,7 @@
  *  some functional stuff also, and AbstractCommand::_Execute
  *  will eventually use those throught data facades...
  **/
-class AbstractMediator: public Named<MediatorFactory::DataType>{
+class AbstractMediator: public Named<MediatorType>{
 	public:
 		// is the mediator data ready to be used ?
 		enum M_Status{

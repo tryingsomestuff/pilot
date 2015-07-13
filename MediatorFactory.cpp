@@ -15,13 +15,13 @@
 MediatorFactory * MediatorFactory::_instance = NULL;
 */
 
-std::map<MediatorFactory::DataType,CreatorBase<AbstractMediator>*> 
-MediatorFactory::_map = std::map<MediatorFactory::DataType,CreatorBase<AbstractMediator>*>();
+std::map<MediatorType,CreatorBase<AbstractMediator>*> 
+MediatorFactory::_map = std::map<MediatorType,CreatorBase<AbstractMediator>*>();
 
 std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command){
 	std::vector<AbstractMediator *> ret;
-	const std::set<MediatorFactory::DataType> mediatorTypes = command->GetData()->GetMediatorTypes();
-	std::set<MediatorFactory::DataType>::const_iterator it = mediatorTypes.cbegin();
+	const std::set<MediatorType> mediatorTypes = command->GetData()->GetMediatorTypes();
+	std::set<MediatorType>::const_iterator it = mediatorTypes.cbegin();
 	std::cout << "Creating mediators for data " << command->GetData()->Id() << std::endl;
 	for( ; it != mediatorTypes.cend() ; ++it){
 		// add in DataPool if needed

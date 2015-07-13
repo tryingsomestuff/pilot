@@ -16,7 +16,8 @@ class CommandCreator : public Creator<DerivedType, AbstractCommand> {};
  * Factory of command
  **/
 typedef AbstractFactory<AbstractCommand,std::string> CommandFactory;
-// previous line defines CommandFactory::DataType as std::string
+// previous line defines CommandFactory::KeyType as std::string
+typedef CommandFactory::KeyType CommandType;
 
 // late include is MANDATORY
 #include "Trait.hpp"

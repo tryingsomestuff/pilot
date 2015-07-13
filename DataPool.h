@@ -20,12 +20,12 @@ class DataPool{ // singleton
 		static DataPool *  Instance();
 		// Delegate mediator to DataPool
 		void               Register   (AbstractMediator * mediator);
-		AbstractMediator * GetMediator(MediatorFactory::DataType type);
-		bool               Contains   (MediatorFactory::DataType type);
+		AbstractMediator * GetMediator(MediatorType type);
+		bool               Contains   (MediatorType type);
 	private:
 		explicit DataPool(){};
 		static DataPool * _pool;
-		std::map<MediatorFactory::DataType,AbstractMediator * > _mediators;
+		std::map<MediatorType,AbstractMediator * > _mediators;
 };
 
 #endif // DATA__POOOL__H

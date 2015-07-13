@@ -19,7 +19,7 @@ class Data1 : public AbstractDataBase<Data1>{
 
 template<>
 struct TraitDataId<Data1>{
-	static DataFactory::DataType Id(){return "data1";}
+	static DataType Id(){return "data1";}
 };
 
 #endif // DATA__1__H

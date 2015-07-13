@@ -13,15 +13,15 @@
  *  Abstract facade to DataPool singleton container
  *  Note that this facade shall also be a proxy (think late-init, buffered, access to distant data, ...)
  **/
-class AbstractData: public Named<DataFactory::DataType>{
+class AbstractData: public Named<DataType>{
     public:
         AbstractData();
         virtual ~AbstractData();
 
-		void                                      AddDepend       (MediatorFactory::DataType m );
-		const std::set<MediatorFactory::DataType> GetMediatorTypes(                            )const;
+		void                         AddDepend       (MediatorType m );
+		const std::set<MediatorType> GetMediatorTypes(                )const;
     private:
-		std::set<MediatorFactory::DataType> _mediatorTypes;
+		std::set<MediatorType> _mediatorTypes;
 };
 
 /**
