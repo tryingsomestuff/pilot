@@ -28,10 +28,10 @@ typedef MediatorFactory::KeyType MediatorType;
  *  Shortcut for specific register
  **/
 namespace MediatorFactoryTools{
-template <class DerivedType>
-void Register(){
-   MediatorFactory::Register(TraitMediatorId<DerivedType>::Id(),new MediatorCreator<DerivedType>);
-}
+	template <class DerivedType>
+	void Register(){
+	   MediatorFactory::Register(TraitMediatorId<DerivedType>::Id(),new MediatorCreator<DerivedType>);
+	}
 } // DataFactoryTools
 
 

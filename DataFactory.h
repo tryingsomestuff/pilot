@@ -41,10 +41,10 @@ typedef DataFactory::KeyType DataType;
  *  Shortcut for specific register
  **/
 namespace DataFactoryTools{
-template <class DerivedType>
-void Register(){
-   DataFactory::Register(TraitDataId<DerivedType>::Id(),new DataCreator<DerivedType>);
-}
+	template <class DerivedType>
+	void Register(){
+	   DataFactory::Register(TraitDataId<DerivedType>::Id(),new DataCreator<DerivedType>);
+	}
 } // DataFactoryTools
 
 #endif // DATA__FACTORY__H

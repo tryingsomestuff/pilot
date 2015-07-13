@@ -32,9 +32,9 @@ public:
 * Used to register new KeyT/Creator pair
 * Contains a map of corresponding creators
 * The main constrain is that Create() function do not take any argument
-* Please note that KeyT (KeyType) MUST be :
-*      - serializable with operator<< 
-*      - serializable with operator>> 
+* Please note that KeyT (KeyType) MUST :
+*      - have operator<<(ostream)
+*      - have operator>>(istream)
 *      - have operator== implemented
 *      - have operator< implemented
 *      - have operator> implemented

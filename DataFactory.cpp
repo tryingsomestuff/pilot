@@ -30,7 +30,7 @@ bool UserDataType::operator > (const UserDataType & t)const{
 }
 
 std::ostream& operator <<(std::ostream& str, const UserDataType& obj){
-	str.operator<<(obj.a.c_str());
+	str << obj.a;
 	return str;
 }
 

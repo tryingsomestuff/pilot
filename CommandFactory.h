@@ -26,10 +26,10 @@ typedef CommandFactory::KeyType CommandType;
  *  Shortcut for specific register
  **/
 namespace CommandFactoryTools{
-template <class DerivedType>
-void Register(){
-   CommandFactory::Register(TraitCommandId<DerivedType>::Id(),new CommandCreator<DerivedType>);
-}
+	template <class DerivedType>
+	void Register(){
+	   CommandFactory::Register(TraitCommandId<DerivedType>::Id(),new CommandCreator<DerivedType>);
+	}
 } // CommandFactoryTools
 
 #endif // COMMAND_FACTORY__H
