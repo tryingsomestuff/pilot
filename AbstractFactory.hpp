@@ -2,7 +2,6 @@
 #define __ABSTRACT_FACTORY__H
 
 #include <map>
-#include <assert.h>
 
 /**
 * An abstract base creator class

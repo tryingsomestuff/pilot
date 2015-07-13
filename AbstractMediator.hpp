@@ -1,7 +1,6 @@
 #ifndef ABSTRACT__MEDIATOR__H
 #define ABSTRACT__MEDIATOR__H
 
-#include <iostream>
 #include "Trait.hpp"
 #include "Named.hpp"
 

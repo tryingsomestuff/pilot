@@ -6,8 +6,6 @@
 class AbstractMediator;
 
 #include <map>
-#include <iostream>
-
 
 /**
  *  The DataPool singleton.

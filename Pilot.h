@@ -3,9 +3,6 @@
 
 #include <vector>
 
-#include "AbstractCommand.hpp" // NOT a forward decl because this is the main entry point header ...
-#include "DataFactory.h"
-#include "CommandFactory.h"
 #include "Trait.hpp"
 
 class Pilot{

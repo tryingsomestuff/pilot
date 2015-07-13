@@ -1,13 +1,10 @@
 #ifndef ABSTRACT__DATA__H
 #define ABSTRACT__DATA__H
 
-#include <iostream>
 #include <set>
 
 #include "Trait.hpp"
 #include "Named.hpp"
-#include "MediatorFactory.h"
-#include "DataFactory.h"
 
 /**
  *  Abstract facade to DataPool singleton container

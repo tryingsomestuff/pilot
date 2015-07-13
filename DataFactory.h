@@ -2,6 +2,7 @@
 #define DATA__FACTORY__H
 
 #include "AbstractFactory.hpp"
+
 #include <iostream>
 #include <string>
 

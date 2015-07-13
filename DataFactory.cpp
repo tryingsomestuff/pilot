@@ -6,6 +6,10 @@
 DataFactory * DataFactory::_instance = NULL;
 */
 
+std::map<DataType,CreatorBase<AbstractData>*> 
+DataFactory::_map = std::map<DataType,CreatorBase<AbstractData>*>();
+
+
 UserDataType::UserDataType(){
 	a="";
 };
@@ -38,9 +42,4 @@ std::istream& operator >>(std::istream& str, UserDataType& obj){
 	str >> obj.a;
 	return str;
 }
-
-
-std::map<DataType,CreatorBase<AbstractData>*> 
-DataFactory::_map = std::map<DataType,CreatorBase<AbstractData>*>();
-
 

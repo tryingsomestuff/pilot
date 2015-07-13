@@ -1,8 +1,6 @@
 #ifndef DATA__2__H
 #define DATA__2__H
 
-#include <iostream>
-
 #include "AbstractData.hpp"
 
 /**

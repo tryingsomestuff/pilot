@@ -3,8 +3,6 @@
 
 #include "AbstractMediator.hpp"
 
-#include <iostream>
-
 /**
  *  Another concrete mediator example.
  **/

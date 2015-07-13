@@ -9,6 +9,7 @@
 #include "Pilot.h"
 #include "MediatorFactory.h"
 #include "AbstractMediator.hpp"
+#include "AbstractCommand.hpp"
 
 typedef unsigned int uint;
 
