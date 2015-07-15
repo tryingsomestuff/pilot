@@ -17,7 +17,8 @@ class DataCreator : public Creator<DerivedType, AbstractData> {};
 class UserDataType{ // just an example ...
 public:
 	UserDataType();
-	UserDataType(std::string s);
+	UserDataType(const std::string & s);
+	UserDataType(const char * s);
 	~UserDataType();
 	friend std::ostream& operator <<(std::ostream&, const UserDataType&);
 	friend std::istream& operator >>(std::istream&, UserDataType&);
