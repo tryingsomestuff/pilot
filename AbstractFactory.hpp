@@ -2,6 +2,7 @@
 #define __ABSTRACT_FACTORY__H
 
 #include <map>
+#include <iostream>
 
 /**
 * An abstract base creator class
