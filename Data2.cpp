@@ -12,7 +12,7 @@
 /**
  *  A concrete facade to DataPool singleton container
  **/
-Data2::Data2():AbstractDataBase(){
+Data2::Data2():AbstractDataBase<Data2>(){
 
 }
 
