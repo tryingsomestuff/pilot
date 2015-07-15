@@ -1,11 +1,11 @@
+#include "MediatorFactory.h"
+#include "DataFactory.h"
+#include "CommandFactory.h"
+
 #ifndef TRAIT____H
 #define TRAIT____H
 
 #include <string>
-
-#include "MediatorFactory.h"
-#include "DataFactory.h"
-#include "CommandFactory.h"
 
 /**
  *  Trait for mediator Name.
