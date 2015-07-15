@@ -9,7 +9,7 @@
  * A concrete Command using Data2 facade (
  **/
 
-Command2::Command2():AbstractCommandBase(){
+Command2::Command2():AbstractCommandBase<Command2>(){
 
 }
 
