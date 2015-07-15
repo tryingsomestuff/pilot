@@ -14,7 +14,11 @@ UserDataType::UserDataType(){
 	a="";
 };
 
-UserDataType::UserDataType(std::string s){
+UserDataType::UserDataType(const std::string & s){
+	a=s;
+};
+
+UserDataType::UserDataType(const char * s){
 	a=s;
 };
 
