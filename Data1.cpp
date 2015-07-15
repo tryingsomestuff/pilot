@@ -12,7 +12,7 @@
 /**
  *  A concrete facade to DataPool singleton container
  **/
-Data1::Data1():AbstractDataBase(){
+Data1::Data1():AbstractDataBase<Data1>(){
 	// add denpendancy on required mediators
 	AddDepend(TraitMediatorId<Mediator1>::Id());
 	AddDepend(TraitMediatorId<Mediator2>::Id());
