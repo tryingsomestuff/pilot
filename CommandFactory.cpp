@@ -5,6 +5,6 @@
 /*
 CommandFactory * CommandFactory::_instance = NULL;
 */
-
-std::map<CommandType,CreatorBase<AbstractCommand>*> 
+template<>
+std::map<CommandType,CreatorBase<AbstractCommand>*>
 CommandFactory::_map = std::map<CommandType,CreatorBase<AbstractCommand>*>();

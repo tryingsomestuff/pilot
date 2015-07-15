@@ -79,13 +79,13 @@ public:
     }
 
     ~AbstractFactory(){
-        std::map<KeyT, CreatorBase<T>*>::iterator i = _map.begin();
+        typename std::map<KeyT, CreatorBase<T>*>::iterator i = _map.begin();
         while (i != _map.end()){
             delete (*i).second;
             ++i;
         }
     }
-	
+
 	/*
 	static AbstractFactory<T, KeyT> * Instance(){
 		if ( ! _instance )

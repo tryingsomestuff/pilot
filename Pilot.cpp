@@ -68,11 +68,11 @@ void Pilot::Execute(){
 }
 
 void Pilot::Read(std::string fileName){
-	std::ifstream file(fileName);
+	std::ifstream file(fileName.c_str());
 	DataType dataType;
 	CommandType commandType;
 	while (file >> dataType >> commandType){
-        AddTask(dataType,commandType);       
+        AddTask(dataType,commandType);
     }
 }
 

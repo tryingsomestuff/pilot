@@ -5,8 +5,8 @@
 /*
 DataFactory * DataFactory::_instance = NULL;
 */
-
-std::map<DataType,CreatorBase<AbstractData>*> 
+template<>
+std::map<DataType,CreatorBase<AbstractData>*>
 DataFactory::_map = std::map<DataType,CreatorBase<AbstractData>*>();
 
 
