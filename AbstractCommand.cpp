@@ -3,7 +3,7 @@
 
 #include "assert.h"
 
-AbstractCommand::AbstractCommand():_d(0){
+AbstractCommand::AbstractCommand():_d(0),_n(0){
 
 }
 
@@ -20,7 +20,15 @@ bool AbstractCommand::Execute(){
 		std::cout << "Data pointer is requiered before executing a commands, use SetData" << std::endl;
 		return false;
 	}
-	return _Execute();
+	if (_Execute()){
+		if (_n){
+			return _n->Execute();
+		}
+		else{
+			return true;
+		}
+	}
+	return false;
 }
 
 void AbstractCommand::SetData(AbstractData * d){
@@ -37,4 +45,8 @@ const AbstractData * AbstractCommand::GetData()const{
 		return NULL;
 	}
 	return _d;
+}
+
+void AbstractCommand::SetNext(AbstractCommand * c){
+	_n = c;
 }

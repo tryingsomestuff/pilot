@@ -14,8 +14,10 @@
 // Must defined corresponding static members ...
 
 /*
+template<>
 MediatorFactory * MediatorFactory::_instance = NULL;
 */
+
 template<>
 std::map<MediatorType,CreatorBase<AbstractMediator>*>
 MediatorFactory::_map = std::map<MediatorType,CreatorBase<AbstractMediator>*>();

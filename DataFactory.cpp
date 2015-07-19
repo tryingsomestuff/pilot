@@ -3,8 +3,10 @@
 // Must defined corresponding static members ...
 
 /*
+template<>
 DataFactory * DataFactory::_instance = NULL;
 */
+
 template<>
 std::map<DataType,CreatorBase<AbstractData>*>
 DataFactory::_map = std::map<DataType,CreatorBase<AbstractData>*>();

@@ -8,7 +8,7 @@ class Data2;
 /**
  * A concrete Command using Data1 facade (use 0 mediator)
  **/
-class Command2 : public AbstractCommandBase<Command2>{
+class Command2 : public AbstractCommandIterate<Command2>{
 	public:
 		explicit Command2();
 		virtual ~Command2();

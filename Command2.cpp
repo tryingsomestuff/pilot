@@ -9,8 +9,23 @@
  * A concrete Command using Data2 facade (
  **/
 
-Command2::Command2():AbstractCommandBase<Command2>(){
+class TestIterateCondition : public AbstractCommandIterate<Command2>::IterateCondition{
+public:
+	TestIterateCondition(int maxi):AbstractCommandIterate<Command2>::IterateCondition(),_count(0),_max(maxi){}
+	virtual bool Iterate(){
+		if( _count++ < _max ){
+			std::cout << "Iterate : " << _count << std::endl;
+			return true;
+		}
+		return false;
+	}
+protected:
+	int _count;
+	int _max;
+};
 
+Command2::Command2():AbstractCommandIterate<Command2>(){
+	SetCondition(new TestIterateCondition(4));
 }
 
 Command2::~Command2(){

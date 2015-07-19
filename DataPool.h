@@ -17,7 +17,7 @@ class DataPool{ // singleton
 		~DataPool();
 		static DataPool *  Instance();
 		// Delegate mediator to DataPool
-		void               Register   (AbstractMediator * mediator);
+		void               Register   (AbstractMediator * mediator); // take ownership
 		AbstractMediator * GetMediator(MediatorType type);
 		bool               Contains   (MediatorType type);
 	private:
