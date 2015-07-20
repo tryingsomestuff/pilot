@@ -14,23 +14,6 @@ AbstractCommand::~AbstractCommand(){
 	}
 }
 
-bool AbstractCommand::Execute(){
-	// data is required for _Execute to work !
-	if (! _d){
-		std::cout << "Data pointer is requiered before executing a commands, use SetData" << std::endl;
-		return false;
-	}
-	if (_Execute()){
-		if (_n){
-			return _n->Execute();
-		}
-		else{
-			return true;
-		}
-	}
-	return false;
-}
-
 void AbstractCommand::SetData(AbstractData * d){
 	_d=d;
 }
