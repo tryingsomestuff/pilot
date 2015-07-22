@@ -10,7 +10,7 @@ class Data1;
  **/
 class Command1 : public AbstractCommandBase<Command1>{
 	public:
-		explicit Command1();
+		explicit Command1(AbstractData *d=0, AbstractCommand * n=0);
 		virtual ~Command1();
 		virtual bool _Execute();
 };

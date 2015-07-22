@@ -12,7 +12,7 @@ class AbstractData;
 **/
 class AbstractCommand:public Named<CommandType>{
 public:
-	explicit AbstractCommand();
+	explicit AbstractCommand(AbstractData *d=0, AbstractCommand * n=0);
 	virtual ~AbstractCommand();
 
 	virtual bool          Execute(                ) = 0;     // THIS IS NOT THE ONE THAT SHALL BE OVERRIDEN BY USER
@@ -20,7 +20,7 @@ public:
 	AbstractData *        GetData(                );     // shall will really give this one ???
 	const AbstractData *  GetData(                )const;
 
-	void                  SetNext(AbstractCommand * c);  // just seting next command. This will not register the corresponding type or instanciate anything 
+	void                  SetNext(AbstractCommand * c);  // just seting next command. This will not register the corresponding type or instanciate anything
 protected:
 	virtual bool _Execute() = 0;  // THIS IS THE ONE THAT MUST BE OVERRIDE
 	AbstractData * _d;
@@ -35,7 +35,7 @@ protected:
 template< class T >
 class AbstractCommandBase : public AbstractCommand{
 public:
-	AbstractCommandBase():AbstractCommand(){
+	AbstractCommandBase(AbstractData *d=0, AbstractCommand * n=0):AbstractCommand(d,n){
 		_id = TraitCommandId<T>::Id();
 	}
 
@@ -62,13 +62,13 @@ public:
 *  Automatically define Name from Trait
 *  This allows Trait specialization to be done anywhere as soon
 *  as the header is accessible there ...
-*  Command that automatically iterate until a specified condition 
+*  Command that automatically iterate until a specified condition
 *  is obtained
 **/
 template< class T >
 class AbstractCommandIterate : public AbstractCommand{
 public:
-	AbstractCommandIterate():AbstractCommand(),_cond(0){
+	AbstractCommandIterate(AbstractData *d=0, AbstractCommand * n=0):AbstractCommand(d,n),_cond(0){
 		_id = TraitCommandId<T>::Id();
 	}
 
@@ -81,7 +81,7 @@ public:
 
 	class IterateCondition{
 	public:
-		virtual bool Iterate() = 0; 
+		virtual bool Iterate() = 0;
 	};
 
 	bool Execute(){

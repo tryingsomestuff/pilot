@@ -1,3 +1,4 @@
+#include "Command3.h"
 #include "Command1.h"
 #include "Data1.h"
 
@@ -9,16 +10,16 @@
  * A concrete Command using Data1 facade (mix of Mediator1 and Mediator2)
  **/
 
-Command1::Command1(AbstractData *d, AbstractCommand * n):AbstractCommandBase<Command1>(d,n){
+Command3::Command3(AbstractData *d, AbstractCommand * n):AbstractCommandBase<Command3>(d,n){
+    this->SetNext(new Command1(DataFactory::Create(TraitDataId<Data1>::Id())));
+}
+
+Command3::~Command3(){
 
 }
 
-Command1::~Command1(){
-
-}
-
-bool Command1::_Execute(){
-    std::cout << "-- Execute 1" << std::endl;
+bool Command3::_Execute(){
+    std::cout << "-- Execute 3" << std::endl;
 	Data1 * d = dynamic_cast<Data1*>(_d);
 	assert(d!=0);
 	std::cout << "Hello " << d->Id() << std::endl;

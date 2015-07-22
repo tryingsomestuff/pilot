@@ -3,7 +3,7 @@
 
 #include "assert.h"
 
-AbstractCommand::AbstractCommand():_d(0),_n(0){
+AbstractCommand::AbstractCommand(AbstractData *d, AbstractCommand * n):_d(d),_n(n){
 
 }
 

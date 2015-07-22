@@ -24,7 +24,8 @@ protected:
 	int _max;
 };
 
-Command2::Command2():AbstractCommandIterate<Command2>(){
+Command2::Command2(AbstractData *d, AbstractCommand * n):AbstractCommandIterate<Command2>(d,n){
+    // build and set the IterateCondition
 	SetCondition(new TestIterateCondition(4));
 }
 
@@ -33,6 +34,7 @@ Command2::~Command2(){
 }
 
 bool Command2::_Execute(){
+    std::cout << "-- Execute 2" << std::endl;
 	Data2 * d = dynamic_cast<Data2*>(_d);
 	assert(d!=0);
 	std::cout << "Hello " << d->Id() << std::endl;
