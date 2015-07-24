@@ -4,6 +4,10 @@
 #include <iostream>
 #include <assert.h>
 
+
+//deprecated
+
+
 /**
  *  Trait for mediator Name.
  *  MUST be defined for each mediator type.
