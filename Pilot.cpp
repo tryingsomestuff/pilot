@@ -27,25 +27,34 @@ void Pilot::AddTask(DataType data, CommandType command){
 	_commandsType.push_back(command);
 }
 
+AbstractCommand * Pilot::BuildOne(DataType data, CommandType command){
+	// instanciate data
+	AbstractData *    d = DataFactory::Create(data);
+	if ( !d ){
+		std::cout << "Error data not built" << std::endl;
+		return NULL;
+	}
+	// instanciate Command
+	AbstractCommand * c = CommandFactory::Create(command);
+	if ( !c ){
+		std::cout << "Error command not built" << std::endl;
+		return NULL;
+	}
+	// link data with command and delegate ownership
+	c->SetData(d);
+	return c;
+}
+
 bool Pilot::Build(){
 	std::cout << "Instanciating necessary commands and datas" << std::endl;
 	assert(_datasType.size() == _commandsType.size());
 
 	for(uint k = 0 ; k < _datasType.size() ; ++k){
-		// instanciate data
-		AbstractData *    d = DataFactory::Create(_datasType[k]);
-		if ( !d ){
-			std::cout << "Error data not built" << std::endl;
-			return false;
-		}
-		// instanciate Command
-		AbstractCommand * c = CommandFactory::Create(_commandsType[k]);
+		AbstractCommand * c = NULL;
+		c = BuildOne(_datasType[k],_commandsType[k]);
 		if ( !c ){
-			std::cout << "Error command not built" << std::endl;
 			return false;
 		}
-		// link data with command and delegate ownership
-		c->SetData(d);
 		// append to internal command list
 		_commands.push_back(c);
 	}
@@ -56,7 +65,7 @@ void Pilot::RegisterMediators(){
 	std::cout << "Registering mediators in DataPool" << std::endl;
 	for(uint k = 0 ; k < _commands.size() ; ++k){
 		// instanciate needed mediators
-		std::vector<AbstractMediator*> mediators = MediatorBuilder::Create(_commands[k]);
+		MediatorBuilder::Create(_commands[k]);
 	}
 }
 

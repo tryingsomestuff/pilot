@@ -22,6 +22,13 @@ public:
 	bool Build();
 
 	/**
+	 * Will ask DataFactory and CommandFactory to instanciate object based on argument
+	 * Return the constructed command.
+	 **/
+	static
+	AbstractCommand * BuildOne(DataType datas, CommandType commands);
+	
+	/**
 	 * Register all needed mediators for given DataTypes
 	 * Meditors needed for each data type is known so that
 	 * we can build up all the required meditors.

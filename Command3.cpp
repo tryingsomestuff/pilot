@@ -1,6 +1,9 @@
 #include "Command3.h"
 #include "Command1.h"
+#include "Command4.h"
 #include "Data1.h"
+#include "Data4.h"
+#include "Pilot.h"
 
 #include <string>
 #include <iostream>
@@ -11,7 +14,17 @@
  **/
 
 Command3::Command3(AbstractData *d, AbstractCommand * n):AbstractCommandBase<Command3>(d,n){
-    this->SetNext(new Command1(DataFactory::Create(TraitDataId<Data1>::Id())));
+	// add a fully new command / data
+    DataFactoryTools::Register<Data4>();
+	CommandFactoryTools::Register<Command4>();
+	AbstractCommand * c4 = Pilot::BuildOne(TraitDataId<Data4>::Id(),TraitCommandId<Command4>::Id());
+	MediatorBuilder::Create(c4); // not needed here for Data4, just for fun ...
+
+	this->SetNext(c4);
+
+	// add an existing command to the next next...
+    c4->SetNext(new Command1(DataFactory::Create(TraitDataId<Data1>::Id())));
+
 }
 
 Command3::~Command3(){

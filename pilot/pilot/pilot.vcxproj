@@ -17,9 +17,13 @@
     <ClInclude Include="..\..\AbstractMediator.hpp" />
     <ClInclude Include="..\..\Command1.h" />
     <ClInclude Include="..\..\Command2.h" />
+    <ClInclude Include="..\..\Command3.h" />
+    <ClInclude Include="..\..\Command4.h" />
     <ClInclude Include="..\..\CommandFactory.h" />
     <ClInclude Include="..\..\Data1.h" />
     <ClInclude Include="..\..\Data2.h" />
+    <ClInclude Include="..\..\Data3.h" />
+    <ClInclude Include="..\..\Data4.h" />
     <ClInclude Include="..\..\DataFactory.h" />
     <ClInclude Include="..\..\DataPool.h" />
     <ClInclude Include="..\..\Mediator1.h" />
@@ -35,9 +39,13 @@
     <ClCompile Include="..\..\AbstractMediator.cpp" />
     <ClCompile Include="..\..\Command1.cpp" />
     <ClCompile Include="..\..\Command2.cpp" />
+    <ClCompile Include="..\..\Command3.cpp" />
+    <ClCompile Include="..\..\Command4.cpp" />
     <ClCompile Include="..\..\CommandFactory.cpp" />
     <ClCompile Include="..\..\Data1.cpp" />
     <ClCompile Include="..\..\Data2.cpp" />
+    <ClCompile Include="..\..\Data3.cpp" />
+    <ClCompile Include="..\..\Data4.cpp" />
     <ClCompile Include="..\..\DataFactory.cpp" />
     <ClCompile Include="..\..\DataPool.cpp" />
     <ClCompile Include="..\..\main.cpp" />
