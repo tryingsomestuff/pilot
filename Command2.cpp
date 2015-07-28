@@ -9,9 +9,9 @@
  * A concrete Command using Data2 facade (
  **/
 
-class TestIterateCondition : public AbstractCommandIterate<Command2>::IterateCondition{
+class TestIterateCondition : public IterateCondition{
 public:
-	TestIterateCondition(int maxi):AbstractCommandIterate<Command2>::IterateCondition(),_count(0),_max(maxi){}
+	TestIterateCondition(int maxi):IterateCondition(),_count(0),_max(maxi){}
 	virtual bool Iterate(){
 		if( _count++ < _max ){
 			std::cout << "Iterate : " << _count << std::endl;

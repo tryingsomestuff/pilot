@@ -33,3 +33,42 @@ const AbstractData * AbstractCommand::GetData()const{
 void AbstractCommand::SetNext(AbstractCommand * c){
 	_n = c;
 }
+
+
+MultipleIterateCondition::MultipleIterateCondition(Mode m):_m(m){
+    
+};
+
+MultipleIterateCondition::~MultipleIterateCondition(){
+   	std::list<IterateCondition*>::iterator it = _conditions.begin();        
+   	for(; it != _conditions.end(); ++it){
+   	    delete *it;
+   	}
+   	_conditions.clear();
+};
+
+bool MultipleIterateCondition::Iterate(){
+    std::list<IterateCondition*>::iterator it = _conditions.begin();
+    for(; it != _conditions.end(); ++it){
+        if ( _m == M_OR ){
+           if( ! (*it)->Iterate() ){
+              return false;
+           }
+        }
+        else /*( _m == M_AND )*/{
+           if( (*it)->Iterate() ){ 
+               return true;
+           }
+        }
+    }
+    if ( _m == M_OR ){
+       return true;
+    }
+    else /*( _m == M_AND )*/{
+       return false;
+    }
+};
+
+void  MultipleIterateCondition::AddCondition ( IterateCondition * cond){
+    _conditions.push_back(cond);
+} 

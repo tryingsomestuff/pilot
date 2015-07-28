@@ -50,8 +50,7 @@ bool Pilot::Build(){
 	assert(_datasType.size() == _commandsType.size());
 
 	for(uint k = 0 ; k < _datasType.size() ; ++k){
-		AbstractCommand * c = NULL;
-		c = BuildOne(_datasType[k],_commandsType[k]);
+		AbstractCommand * c = BuildOne(_datasType[k],_commandsType[k]);
 		if ( !c ){
 			return false;
 		}

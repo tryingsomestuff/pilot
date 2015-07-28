@@ -4,18 +4,21 @@
 #include "Trait.hpp"
 #include "Named.hpp"
 
+#include <list>
+
 class AbstractData;
 
 /**
 *  Abstract command, use an AbstractData (facade) to access specified data from mediators in the DataPool
 *  _Execute must be defined in sub class to implement real stuff ...
+*  You MUST NOT inherite from this one. See AbstractCommandBase or AbstractCommandIterate.
 **/
 class AbstractCommand:public Named<CommandType>{
 public:
 	explicit AbstractCommand(AbstractData *d=0, AbstractCommand * n=0);
 	virtual ~AbstractCommand();
 
-	virtual bool          Execute(                ) = 0;     // THIS IS NOT THE ONE THAT SHALL BE OVERRIDEN BY USER
+	virtual bool          Execute(                ) = 0; // THIS IS NOT THE ONE THAT SHALL BE OVERRIDEN BY USER
 	void                  SetData(AbstractData * d);     // take ownership
 	AbstractData *        GetData(                );     // shall will really give this one ???
 	const AbstractData *  GetData(                )const;
@@ -28,6 +31,7 @@ protected:
 };
 
 /**
+*  The base implementation of an AbstractCommand.
 *  Automatically define Name from Trait
 *  This allows Trait specialization to be done anywhere as soon
 *  as the header is accessible there ...
@@ -59,6 +63,39 @@ public:
 };
 
 /**
+ * IterateCondition is an abstract class 
+ * Sub-classes must define bool Iterate()
+ * that teels if iteration have to go on or not.
+ **/
+class IterateCondition{
+public:
+	virtual bool Iterate() = 0;
+};
+
+/**
+ * MultipleIterateCondition is an concrete class 
+ * that teels if iteration have to go on or not
+ * based on many IterateCondition.
+ **/
+class MultipleIterateCondition{
+public:
+    enum Mode{
+        M_AND = 0,
+        M_OR  = 1
+    };
+
+    MultipleIterateCondition (Mode m );
+    ~MultipleIterateCondition(       );
+
+	bool Iterate      ( );
+	void AddCondition ( IterateCondition * cond); // take ownership
+private:
+	std::list<IterateCondition*> _conditions;
+	Mode _m;
+};
+
+/**
+*  The iterative implementation of an AbstractCommand.
 *  Automatically define Name from Trait
 *  This allows Trait specialization to be done anywhere as soon
 *  as the header is accessible there ...
@@ -78,11 +115,6 @@ public:
 			_cond = NULL;
 		}
 	}
-
-	class IterateCondition{
-	public:
-		virtual bool Iterate() = 0;
-	};
 
 	bool Execute(){
 		// data is required for _Execute to work !
@@ -105,7 +137,9 @@ public:
 		}
 		return false;
 	}
+	
 	void  SetCondition ( IterateCondition * cond){_cond=cond;} // take ownership
+	
 protected:
 	IterateCondition * _cond;
 };
