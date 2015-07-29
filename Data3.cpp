@@ -1,7 +1,7 @@
 #include "Data3.h"
 
 #include "Trait.hpp"
-#include "DataPool.h"
+#include "DataPool.hpp"
 #include "AbstractData.hpp"
 
 #include "Mediator1.h"

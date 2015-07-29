@@ -1,4 +1,4 @@
-#include "DataPool.h"
+#include "DataPool.hpp"
 #include "Trait.hpp"
 #include "AbstractMediator.hpp"
 #include "MediatorFactory.h"

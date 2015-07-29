@@ -1,6 +1,6 @@
 #include "MediatorFactory.h"
 #include "Trait.hpp"
-#include "DataPool.h"
+#include "DataPool.hpp"
 
 #include "DataFactory.h"
 #include "AbstractCommand.hpp"
