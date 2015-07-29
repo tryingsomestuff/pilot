@@ -23,7 +23,7 @@ std::map<MediatorType,CreatorBase<AbstractMediator>*>
 MediatorFactory::_map = std::map<MediatorType,CreatorBase<AbstractMediator>*>();
 
 
-std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command){
+std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * command, bool init){
 	assert(command);
 	std::vector<AbstractMediator *> ret;
 	// get data from command and get mediators types from data
@@ -34,22 +34,25 @@ std::vector<AbstractMediator *> MediatorBuilder::Create(const AbstractCommand * 
 	}
 	const std::set<MediatorType> mediatorTypes = d->GetMediatorTypes();
 	// iterate other needed mediators for current data
-	std::cout << "Creating mediators for data " << d->Id() << std::endl;
+	std::cout << "Creating mediators for data : " << d->Id() << std::endl;
 	std::set<MediatorType>::const_iterator it = mediatorTypes.begin();
 	for( ; it != mediatorTypes.end() ; ++it){
 		// add in DataPool if needed
 		if ( ! DataPool::Instance()->Contains(*it)){
-			std::cout << "Instantiating mediator " << *it << std::endl;
+			std::cout << "Instantiating mediator : " << *it << std::endl;
 			// delegate the mediator to DataPool
 			DataPool::Instance()->Register(MediatorFactory::Create(*it));
 			AbstractMediator * med = DataPool::Instance()->GetMediator(*it);
-			if ( ! med->Init() ){
-				std::cout << "Fail to init mediator " << med->Id() << std::endl;
+			if ( ! init ){
+				std::cout << "Mediator registered in datapool without being initialized : " << med->Id() << std::endl;
+			}
+			else if ( ! med->Init() || med->Status() != AbstractMediator::M_READY ){
+				std::cout << "Fail to init mediator : " << med->Id() << std::endl;
 			}
 			ret.push_back(med);
 		}
 		else{
-			std::cout << "Mediator already register in pool " << *it << std::endl;
+			std::cout << "Mediator already register in pool : " << *it << std::endl;
 		}
 	}
 	return ret;

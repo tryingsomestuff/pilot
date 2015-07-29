@@ -14,10 +14,6 @@ Mediator2::~Mediator2(){
 
 }
 
-AbstractMediator::M_Status Mediator2::Status()const{
-  return M_READY;
-}
-
-bool Mediator2::Init(){
+bool Mediator2::_Init(){
   return true;
 }

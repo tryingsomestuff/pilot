@@ -23,13 +23,13 @@ Data1::~Data1(){
 }
 
 double Data1::Toto(){
-	Mediator2 * med = dynamic_cast<Mediator2*>(DataPool::Instance()->GetMediator(TraitMediatorId<Mediator2>::Id()));
+	Mediator2 * med = SafeMediatorAccess<Mediator2>();
 	assert(med!=0);
 	return med->toto;
 }
 
 std::string Data1::Bla() {
-	Mediator1 * med = dynamic_cast<Mediator1*>(DataPool::Instance()->GetMediator(TraitMediatorId<Mediator1>::Id()));
+	Mediator1 * med = SafeMediatorAccess<Mediator1>();
 	assert(med!=0);
 	return med->bla;
 }

@@ -44,7 +44,7 @@ int main(int argc,char ** argv){
 	RegisterToFactories();
 
 	Pilot pilot;
-	pilot.Execute("tasks.txt");
+	pilot.Execute("../../tasks.txt");
 
 	return 0;
 }

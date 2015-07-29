@@ -23,12 +23,18 @@ class AbstractMediator: public Named<MediatorType>{
         AbstractMediator();
 		virtual ~AbstractMediator();
 		/// Is the mediator data ready to be used ?
-		virtual M_Status Status()const = 0;
-		/// Please note that Init() will be called automatically 
+		/// virtual because things can become a little bit complex sometimes ...
+		virtual M_Status Status()const; 
+		/// Please note that Init() can be called automatically 
 		/// just after the mediator is registered 
 		/// in the DataPool in MediatorBuilder::Create(...) via
 		/// DataPool::Instance()->Register(MediatorFactory::Create(...)
-		virtual bool     Init()        = 0;
+		/// Set status to M_READY by default. See _Init() to change this ...
+		bool Init();
+    protected:
+	    M_Status _status;
+		/// Init shall set _status to M_READY or M_BAD
+		virtual bool     _Init() = 0;
 };
 
 /**

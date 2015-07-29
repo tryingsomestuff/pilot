@@ -64,7 +64,7 @@ void Pilot::RegisterMediators(){
 	std::cout << "Registering mediators in DataPool" << std::endl;
 	for(uint k = 0 ; k < _commands.size() ; ++k){
 		// instanciate needed mediators
-		MediatorBuilder::Create(_commands[k]);
+		MediatorBuilder::Create(_commands[k], false); // force mediator init on the fly
 	}
 }
 

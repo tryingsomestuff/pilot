@@ -10,8 +10,8 @@ class Mediator1 : public AbstractMediatorBase<Mediator1>{
 	public:
 		Mediator1();
 		~Mediator1();
-		virtual M_Status Status()const;
-		virtual bool Init();
+    protected:
+		virtual bool _Init();
 	//private:
 	public:
 		int toto;

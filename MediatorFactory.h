@@ -40,7 +40,7 @@ namespace MediatorFactoryTools{
  **/
 class MediatorBuilder{
 	public:
-		static std::vector<AbstractMediator *> Create(const AbstractCommand * command);
+		static std::vector<AbstractMediator *> Create(const AbstractCommand * command, bool init = false);
 };
 
 #endif // MEDIATOR__FACTORY__H
