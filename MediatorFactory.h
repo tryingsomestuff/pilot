@@ -32,7 +32,7 @@ namespace MediatorFactoryTools{
 	void Register(){
 	   MediatorFactory::Register(TraitMediatorId<DerivedType>::Id(),new MediatorCreator<DerivedType>);
 	}
-} // DataFactoryTools
+} // MediatorFactoryTools
 
 
 /**
