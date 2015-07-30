@@ -2,8 +2,7 @@
 #define DATA__POOOL__H
 
 #include "MediatorFactory.h"
-
-class AbstractMediator;
+#include "AbstractMediator.hpp"
 
 #include <map>
 
