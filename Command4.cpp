@@ -17,6 +17,6 @@ Command4::~Command4(){
 }
 
 bool Command4::_Execute(){
-    std::cout << "-- Execute 4" << std::endl;
+    Logger::Instance() << "-- Execute 4";
 	return true;
 }

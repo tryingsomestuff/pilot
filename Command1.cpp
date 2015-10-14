@@ -18,12 +18,12 @@ Command1::~Command1(){
 }
 
 bool Command1::_Execute(){
-    std::cout << "-- Execute 1" << std::endl;
+    Logger::Instance() << "-- Execute 1";
 	Data1 * d = dynamic_cast<Data1*>(_d);
 	assert(d!=0);
-	std::cout << "Hello " << d->Id() << std::endl;
-	std::cout << "Toto  " << d->Toto() << std::endl;
-	std::cout << "Bla   " << d->Bla() << std::endl;
+	Logger::Instance() << "Hello " << d->Id();
+	Logger::Instance() << "Toto  " << d->Toto();
+	Logger::Instance() << "Bla   " << d->Bla();
 
 	return true;
 }

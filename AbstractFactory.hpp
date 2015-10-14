@@ -59,8 +59,8 @@ public:
 	/// add creator to registered type
     static void Register(KeyT id, CreatorBase<T>* Fn){
 		if( Contains(id) ){
-			std::cout << "WARNING :: A creator with the same name is already registered " << id << std::endl;
-			std::cout << "This is either a double registration or a name collision. " << std::endl;
+			Logger::Instance() << "WARNING :: A creator with the same name is already registered " << id;
+			Logger::Instance() << "This is either a double registration or a name collision. ";
 		}
 		else{
            _map[id] = Fn;
@@ -73,7 +73,7 @@ public:
            return _map[id]->Create();
 		}
 		else{
-		   std::cout << "WARNING :: trying to use a Creator that is not registered : " << id << std::endl;
+		   Logger::Instance() << "WARNING :: trying to use a Creator that is not registered : " << id;
 		   return NULL;
 		}
     }

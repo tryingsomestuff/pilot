@@ -29,14 +29,14 @@ DataPool * DataPool::Instance(){
 void DataPool::Register(AbstractMediator * mediator){
 	assert(mediator!=0);
 	if ( GetMediator(mediator->Id()) != NULL ){
-		std::cout << "Mediator already present in DataPool" << std::endl;
+		Logger::Instance() << "Mediator already present in DataPool";
 		// HORRIBLE !!!
 		// just pay the cost of instanciation and delete it right now !!!
 		// Shall never append anyway...
 		delete mediator;
 		return;
 	}
-	std::cout << "Registering mediator " << mediator->Id() << std::endl;
+	Logger::Instance() << "Registering mediator " << mediator->Id();
 	_mediators[mediator->Id()] = mediator;
 }
 

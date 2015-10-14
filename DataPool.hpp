@@ -3,6 +3,7 @@
 
 #include "MediatorFactory.h"
 #include "AbstractMediator.hpp"
+#include "Logger.hpp"
 
 #include <map>
 
@@ -29,15 +30,15 @@ template< class T >
 T * SafeMediatorAccess(){
 	T * med = dynamic_cast<T*>(DataPool::Instance()->GetMediator(TraitMediatorId<T>::Id()));
 	if ( ! med ){
-		std::cout << "Cannot get mediator in DataPool : " << TraitMediatorId<T>::Id() << std::endl;
+		Logger::Instance() << "Cannot get mediator in DataPool : " << TraitMediatorId<T>::Id();
 		return NULL;
 	}
 	if ( med->Status() == AbstractMediator::M_BAD ){
-		std::cout << "Mediator is in BAD state : " << TraitMediatorId<T>::Id() << std::endl;
+		Logger::Instance() << "Mediator is in BAD state : " << TraitMediatorId<T>::Id();
 		return NULL;
 	}
 	if ( med->Status() == AbstractMediator::M_NOT_READY ){
-		std::cout << "Mediator is not initialized yet. Forced init : " << TraitMediatorId<T>::Id() << std::endl;
+		Logger::Instance() << "Mediator is not initialized yet. Forced init : " << TraitMediatorId<T>::Id();
 		med->Init();
 		return med;
 	}

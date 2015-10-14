@@ -23,18 +23,18 @@
  **/
 void RegisterToFactories(){
 	// Register all Data ...
-	std::cout << "Registering Datas" << std::endl;
+	Logger::Instance() << "Registering Datas";
 	DataFactoryTools::Register<Data1>();
 	DataFactoryTools::Register<Data2>();
 
 	// Register all Command
-	std::cout << "Registering Commands" << std::endl;
+	Logger::Instance() << "Registering Commands";
 	CommandFactoryTools::Register<Command1>();
     CommandFactoryTools::Register<Command2>();
     CommandFactoryTools::Register<Command3>();
 
 	// Register mediator
-	std::cout << "Registering Mediators" << std::endl;
+	Logger::Instance() << "Registering Mediators";
 	MediatorFactoryTools::Register<Mediator1>();
 	MediatorFactoryTools::Register<Mediator2>();
 }

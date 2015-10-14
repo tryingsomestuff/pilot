@@ -14,7 +14,7 @@ public:
 	TestIterateCondition(int maxi):IterateCondition(),_count(0),_max(maxi){}
 	virtual bool Iterate(){
 		if( _count++ < _max ){
-			std::cout << "Iterate : " << _count << std::endl;
+			Logger::Instance() << "Iterate : " << _count;
 			return true;
 		}
 		return false;
@@ -34,12 +34,12 @@ Command2::~Command2(){
 }
 
 bool Command2::_Execute(){
-    std::cout << "-- Execute 2" << std::endl;
+    Logger::Instance() << "-- Execute 2";
 	Data2 * d = dynamic_cast<Data2*>(_d);
 	assert(d!=0);
-	std::cout << "Hello " << d->Id() << std::endl;
-	std::cout << "Tata  " << d->Tata() << std::endl;
-	std::cout << "Bli   " << d->Bli() << std::endl;
+	Logger::Instance() << "Hello " << d->Id();
+	Logger::Instance() << "Tata  " << d->Tata();
+	Logger::Instance() << "Bli   " << d->Bli();
 
 	return true;
 }

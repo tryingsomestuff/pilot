@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\Data4.h" />
     <ClInclude Include="..\..\DataFactory.h" />
     <ClInclude Include="..\..\DataPool.hpp" />
+    <ClInclude Include="..\..\Logger.hpp" />
     <ClInclude Include="..\..\Mediator1.h" />
     <ClInclude Include="..\..\Mediator2.h" />
     <ClInclude Include="..\..\MediatorFactory.h" />
@@ -48,6 +49,7 @@
     <ClCompile Include="..\..\Data4.cpp" />
     <ClCompile Include="..\..\DataFactory.cpp" />
     <ClCompile Include="..\..\DataPool.cpp" />
+    <ClCompile Include="..\..\Logger.cpp" />
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\Mediator1.cpp" />
     <ClCompile Include="..\..\Mediator2.cpp" />

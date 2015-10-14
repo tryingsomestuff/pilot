@@ -3,6 +3,7 @@
 
 #include "Trait.hpp"
 #include "Named.hpp"
+#include "Logger.hpp"
 
 #include <list>
 
@@ -46,7 +47,7 @@ public:
 	bool Execute(){
 		// data is required for _Execute to work !
 		if (! _d){
-			std::cout << "Data pointer is requiered before executing a commands, use SetData" << std::endl;
+			Logger::Instance() << "Data pointer is requiered before executing a commands, use SetData";
 			return false;
 		}
 		if (_Execute()){
@@ -118,7 +119,7 @@ public:
 	bool Execute(){
 		// data is required for _Execute to work !
 		if (! _d){
-			std::cout << "Data pointer is requiered before executing a commands, use SetData" << std::endl;
+			Logger::Instance() << "Data pointer is requiered before executing a commands, use SetData";
 			return false;
 		}
 		if (_Execute()){

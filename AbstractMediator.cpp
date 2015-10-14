@@ -1,4 +1,5 @@
 #include "AbstractMediator.hpp"
+#include "Logger.hpp"
 
 AbstractMediator::AbstractMediator():_status(AbstractMediator::M_NOT_READY){
 	
@@ -14,7 +15,7 @@ AbstractMediator::M_Status AbstractMediator::Status()const{
 
 bool
 AbstractMediator::Init(){
-	std::cout << "Initializing mediator " << _id << std::endl;
+	Logger::Instance() << "Initializing mediator " << _id;
 	_status = M_READY;
 	return _Init();
 }
