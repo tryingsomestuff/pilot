@@ -24,7 +24,7 @@ public:
 	AbstractData *        GetData(                );     // shall will really give this one ???
 	const AbstractData *  GetData(                )const;
 
-	void                  SetNext(AbstractCommand * c);  // just seting next command. This will not register the corresponding type or instanciate anything
+	void                  SetNext(AbstractCommand * c);  // just set next command. This will not register the corresponding type, or instanciate anything
 protected:
 	virtual bool _Execute() = 0;  // THIS IS THE ONE THAT MUST BE OVERRIDE
 	AbstractData * _d;
