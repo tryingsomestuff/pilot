@@ -4,6 +4,8 @@
 #include <map>
 #include <iostream>
 
+#include "Logger.hpp"
+
 /**
 * An abstract base creator class
 * Create() is implemented for each Derived type in template Creator

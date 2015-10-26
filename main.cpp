@@ -21,6 +21,7 @@
  * DO NOT TRY TO DO THIS AUTOMATICALLY in like dummy object because of the
  * static init order fiasco (https://isocpp.org/wiki/faq/ctors#static-init-order-on-first-use)
  **/
+  
 void RegisterToFactories(){
 	// Register all Data ...
 	Logger::Instance() << "Registering Datas";
