@@ -14,16 +14,30 @@
  **/
 
 Command3::Command3(AbstractData *d, AbstractCommand * n):AbstractCommandBase<Command3>(d,n){
-	// add a fully new command / data
+	// add a fully new command / data couple
     DataFactoryTools::Register<Data4>();
 	CommandFactoryTools::Register<Command4>();
-	AbstractCommand * c4 = Pilot::BuildOne(TraitDataId<Data4>::Id(),TraitCommandId<Command4>::Id());
+	AbstractCommand * c4 = Pilot::BuildOne(TraitDataId<Data4>::Id(),TraitCommandId<Command4>::Id(),"My command 4");
 	MediatorBuilder::Create(c4); // not needed here for Data4, just for fun ...
-
 	this->SetNext(c4);
 
-	// add an existing command to the next next...
-    c4->SetNext(new Command1(DataFactory::Create(TraitDataId<Data1>::Id())));
+	// manually add an already registered command to the next next...
+	// No need to register to factory
+	// BUT need to add it in CommandContainer
+	AbstractCommand * c1 = new Command1(DataFactory::Create(TraitDataId<Data1>::Id()));
+    c4->SetNext(c1);
+    Pilot::GetCommandContainer().Set("other command1",c1);
+
+	// manually add an existing command to the next next next ...
+	// No need to register to factory
+	// No need to add it in CommandContainer
+	AbstractCommand * c11 = Pilot::GetCommandContainer().Get("c2");
+	if ( c11 ){
+       c1->SetNext(c11);
+	}
+	else{
+	    Logger::Instance() << "Error command not found";
+	}
 
 }
 

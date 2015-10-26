@@ -10,7 +10,7 @@ class AbstractData;
  * Command creator
  **/
 template <class DerivedType>
-class CommandCreator : public Creator<DerivedType, AbstractCommand> {};
+class CommandCreator : public Creator<DerivedType, AbstractCommand>{};
 
 /**
  * Factory of command

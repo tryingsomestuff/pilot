@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Trait.hpp"
+#include "CommandContainer.h"
 
 class Pilot{
 public:
@@ -13,7 +14,7 @@ public:
 	/**
 	 * Add a data/command couple to the sequence that will be run
 	 **/
-	void AddTask(DataType datas, CommandType commands);
+	void AddTask(DataType data, CommandType command, const std::string & commandName);
 
 	/**
 	 * Will ask DataFactory and CommandFactory to instanciate object based on types "datas" and "commands"
@@ -26,7 +27,7 @@ public:
 	 * Return the constructed command.
 	 **/
 	static
-	AbstractCommand * BuildOne(DataType datas, CommandType commands);
+	AbstractCommand * BuildOne(DataType data, CommandType command, const std::string & commandName);
 	
 	/**
 	 * Register all needed mediators for given DataTypes
@@ -55,13 +56,21 @@ public:
 	 **/
 	void Execute(std::string filename);
 
-
+	/**
+	 * Direct access to container, 
+	 * ==> try not to use this unless really necessary <==
+	 **/	
+	static
+	inline
+	CommandContainer & GetCommandContainer(){return _containerContainer;}
+	
 private:
 
     std::vector<DataType>    _datasType;
 	std::vector<CommandType> _commandsType;
+	std::vector<std::string> _commandsName;
 
-	std::vector<AbstractCommand*> _commands;
+	static CommandContainer _containerContainer; // shared for all instance ...
 
 }; // Pilot
 

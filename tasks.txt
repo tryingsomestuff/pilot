@@ -1,6 +1,6 @@
-data1 command1
-data2 command2
-data1 command1
-data1 command1
-data2 command2
-data1 command3
+data1 command1 c1
+data2 command2 c2
+data1 command1 c11
+data1 command1 c12
+data2 command2 c21
+data1 command3 c3
