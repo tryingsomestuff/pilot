@@ -42,7 +42,7 @@ AbstractCommand * Pilot::BuildOne(DataType data, CommandType command, const std:
 	}
 	// link data with command and delegate ownership
 	c->SetData(d);
-	// append to container
+	// append to container (take ownership, will be deleted automatically)
     _containerContainer.Set(commandName,c);	
 	return c;
 }
@@ -70,7 +70,6 @@ void Pilot::RegisterMediators(){
 	///@todo better with a pretty iterator :-)
 	std::vector<AbstractCommand*> v = GetCommandContainer().GetMainStream();
 	for(uint k = 0 ; k < v.size() ; ++k){
-		// instanciate needed mediators
 		// instanciate needed mediators
 		MediatorBuilder::Create(v[k], false); // force mediator init on the fly
 	}

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\AbstractCommand.hpp" />
+    <ClInclude Include="..\..\AbstractContainer.hpp" />
     <ClInclude Include="..\..\AbstractData.hpp" />
     <ClInclude Include="..\..\AbstractFactory.hpp" />
     <ClInclude Include="..\..\AbstractMediator.hpp" />
@@ -19,6 +20,7 @@
     <ClInclude Include="..\..\Command2.h" />
     <ClInclude Include="..\..\Command3.h" />
     <ClInclude Include="..\..\Command4.h" />
+    <ClInclude Include="..\..\CommandContainer.h" />
     <ClInclude Include="..\..\CommandFactory.h" />
     <ClInclude Include="..\..\Data1.h" />
     <ClInclude Include="..\..\Data2.h" />

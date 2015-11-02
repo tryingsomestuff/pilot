@@ -5,6 +5,12 @@
 #include <vector>
 #include "Logger.hpp"
 
+/**
+ *  Abstract container that provide two functionnality :
+ *  - a map like accessor using string as keys and T as values
+ *  - a main stream vector accessor
+ * The thing is used to as a CommandContainer in the pilot
+ **/
 template< class T >
 class AbstractContainer{
 public:
