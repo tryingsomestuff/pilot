@@ -1,2 +1,2 @@
-g++ -I../lib/ *.cpp ../lib/libPilot.a -o testPilot.exe
+g++ -I../lib/header *.cpp ../lib/libPilot.a -o testPilot.exe
 
