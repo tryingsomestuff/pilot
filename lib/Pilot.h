@@ -28,7 +28,7 @@ public:
 	 **/
 	static
 	AbstractCommand * BuildOne(DataType data, CommandType command, const std::string & commandName);
-	
+
 	/**
 	 * Register all needed mediators for given DataTypes
 	 * Meditors needed for each data type is known so that
@@ -50,27 +50,27 @@ public:
 	void Read(std::string fileName);
 
 	/**
-	 * ALL IN ONE 
+	 * ALL IN ONE
 	 * Execute all commands in there registering order
 	 * well ... FIFO ...
 	 **/
 	void Execute(std::string filename);
 
 	/**
-	 * Direct access to container, 
+	 * Direct access to container,
 	 * ==> try not to use this unless really necessary <==
-	 **/	
+	 **/
 	static
 	inline
 	CommandContainer & GetCommandContainer(){return _containerContainer;}
-	
+
 private:
 
     std::vector<DataType>    _datasType;
 	std::vector<CommandType> _commandsType;
 	std::vector<std::string> _commandsName;
 
-	static CommandContainer _containerContainer; // shared for all instance ...
+	static CommandContainer _containerContainer; // shared for all instance ... Allow quite strange coupling stuff
 
 }; // Pilot
 
