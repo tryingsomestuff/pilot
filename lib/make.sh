@@ -1,4 +1,4 @@
 #!/bin/bash
 g++ -Iheader -c src/*.cpp
-ar rvs libPilot.a src/*.o
+ar rvs libPilot.a *.o
 ./clean.sh
